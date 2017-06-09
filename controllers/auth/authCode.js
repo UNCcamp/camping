@@ -2,10 +2,11 @@
 
 const crypto = require("crypto");
 const random = require("randomstring");
-const ENCRYPTION_KEY = random.generate({
-  length:32,
-  charset: "alphabetic"
-}); // some random string
+const ENCRYPTION_KEY = "NtLlITlqPGPkMxTlSttFAfxsaDNbWqtd"; 
+// random.generate({
+//   length:32,
+//   charset: "alphabetic"
+// }); // some random string
 const IV_LENGTH = 16;
 
 function encrypt(pwd) {

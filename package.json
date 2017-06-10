@@ -18,9 +18,11 @@
   "homepage": "https://github.com/zachmilo/burger#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "chai": "^4.0.2",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
     "method-override": "^2.3.9",
+    "mocha": "^3.4.2",
     "mysql": "^2.13.0",
     "randomstring": "^1.1.5"
   }

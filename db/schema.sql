@@ -5,66 +5,80 @@ CREATE DATABASE BootCamping_db;
 USE BootCamping_db;
 
 CREATE TABLE Profiles (
-        profile_id INT NOT NULL AUTO_INCREMENT,
-        user_name VARCHAR (50) NULL,
-        email_name VARCHAR (50) NULL,
-        image_URL VARCHAR (100) NULL,
-        PRIMARY KEY (profile_id)
+        profileId INT NOT NULL AUTO_INCREMENT,
+        password TEXT (600) NOT NULL,
+        userName VARCHAR (50) NOT NULL,
+        userCity VARCHAR (50) NOT NULL,
+        userState VARCHAR (50) NOT NULL,
+        userZip int(5) NOT NULL, 
+        aboutMe TEXT (1000), NOT NULL;
+        emailName VARCHAR (50) NULL,
+        imageURL VARCHAR (100) NULL,
+        twitterID VARCHAR (30) NULL,
+        facebookID VARCHAR (30) NULL,
+        snapchatId VARCHAR (30) NULL,
+        status, VARCHAR (1) NOT NULL,
+        PRIMARY KEY (profileId)
     );
 
- CREATE TABLE ProfileInterests
+ CREATE TABLE Interests
     (
-    	interest VARCHAR (50) NOT NULL,
-        profile_id INT NOT NULL,
+        interestId INT NOT NULL AUTO_INCREMENT,
+    	interestName VARCHAR (50) NOT NULL,
+        interestDescription VARCHAR (255) NOT NULL,
+        profileId INT NOT NULL,
     	PRIMARY KEY (interest),
-    	FOREIGN KEY (profile_id) REFERENCES PROFILES(profile_id)
+    	FOREIGN KEY (profileId) REFERENCES PROFILES(profileId)
     	);    
     
 CREATE TABLE Activity
     (
-        activity_id INT NOT NULL AUTO_INCREMENT,
-        activity_name VARCHAR (50) NOT NULL,
-        profile_id INT,
-        PRIMARY KEY (activity_id)
+        activityId INT NOT NULL AUTO_INCREMENT,
+        activityName VARCHAR (50) NOT NULL,
+        activityDescription, VA, (200) NOT NULL,
+        profileId INT,
+        PRIMARY KEY (activityId)
+        FOREIGN KEY (profileId) REFERENCES PROFILES(profileId)
         );
 
  CREATE TABLE Inventory
     (
-        inventory_id INT NOT NULL AUTO_INCREMENT,
-        profile_id INT NOT NULL,
-        item_name VARCHAR (50) NOT NULL,
-		item_description VARCHAR (255) NOT NULL,
-		item_quantity INT,
-		Purchase_URL VARCHAR (300),
-		PRIMARY KEY (inventory_id),
-		FOREIGN KEY (profile_id) REFERENCES PROFILES(profile_id)
+        inventoryId INT NOT NULL AUTO_INCREMENT,
+        profileId INT NOT NULL,
+        itemName VARCHAR (50) NOT NULL,
+		itemDescription VARCHAR (255) NOT NULL,
+		itemQuantity INT, NOT NULL,
+		PurchaseURL VARCHAR (300),
+		PRIMARY KEY (inventoryId),
+		FOREIGN KEY (profileId) REFERENCES PROFILES(profileId)
         );
 
 CREATE TABLE Location
     (
-        location_id INT NOT NULL AUTO_INCREMENT,
-        profile_id INT NOT NULL,
-        location_name VARCHAR (50) NOT NULL,
-		location_description VARCHAR (255) NOT NULL,
-		lat_location DECIMAL (9,9),
-		long_location DECIMAL (9,9),
-		PRIMARY KEY (location_id),
-		FOREIGN KEY (profile_id) REFERENCES PROFILES(profile_id)
+        locationId INT NOT NULL AUTO_INCREMENT,
+        profileId INT NOT NULL,
+        locationName VARCHAR (50) NOT NULL,
+		locationDescription VARCHAR (255) NOT NULL,
+		latLocation DECIMAL (9,9),
+		longLocation DECIMAL (9,9),
+		PRIMARY KEY (locationId),
+		FOREIGN KEY (profileId) REFERENCES PROFILES(profileId)
         );
 
  CREATE TABLE Loadouts
     (
-    	loadout_id INT NOT NULL AUTO_INCREMENT,
-        profile_id INT,
-        loadout_description VARCHAR (255) NOT NULL,
-        PRIMARY KEY (loadout_id),
-        FOREIGN KEY (profile_id) REFERENCES PROFILES(profile_id)
+    	loadoutId INT NOT NULL AUTO_INCREMENT,
+        profileId INT,
+        loadoutDescription VARCHAR (255) NOT NULL,
+        PRIMARY KEY (loadoutId),
+        FOREIGN KEY (profileId) REFERENCES PROFILES(profileId)
         );
 
     CREATE TABLE LoadoutItems
-    (
-    	inventory_id INT NOT NULL, 
-        loadout_id INT NOT NULL,
-    	item_quantity INT,
-    	FOREIGN KEY (loadout_id) REFERENCES Loadouts(loadout_id)
+    (	
+        loadoutId INT NOT NULL,
+        inventoryId INT NOT NULL, 
+    	itemQuantity INT, DEFAULT 1,
+    	FOREIGN KEY (loadoutId) REFERENCES Loadouts(loadoutId),
+        PRIMARY KEY (loadoutId, inventoryId)
     	);

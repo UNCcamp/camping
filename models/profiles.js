@@ -1,6 +1,5 @@
-// Requires  
+// Requires
 var Sequelize = require ('sequelize');
-var connection= require('../config/connection.js');
 
 var Profiles = sequelize.define('profiles', {
 	profileId: {
@@ -24,11 +23,11 @@ var Profiles = sequelize.define('profiles', {
 	aboutMe:  {
 		type: Sequelize.text,
 		omitNull: true
-	},	
+	},
 	email:  {
 		type: Sequelize.string,
 		omitNull: true
-	},	
+	},
 	imageURL:  {
 		type: Sequelize.string,
 	},
@@ -42,16 +41,16 @@ var Profiles = sequelize.define('profiles', {
 		type: Sequelize.string,
 	},
 	status:  {
-		type: Sequelize.boolean, 
-		allowNull: false, 
+		type: Sequelize.boolean,
+		allowNull: false,
 		defaultValue: true
 	},
-}); 
+});
 
 Profiles.sync();
 
 var profiles = {
-	
+
 	all: function(cb) {
 		Profiles.findall({}).then(function(response){
 			cb(response);
@@ -75,8 +74,8 @@ var profiles = {
 		 }).catch(function(error) {
 		 	cb(error);
 		 });
-	} // create  
+	} // create
 
-}// Profile 
+}// Profile
 
 module.exports = profiles;

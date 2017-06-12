@@ -1,5 +1,4 @@
 var Sequelize = require ('sequelize');
-var connection= require('../config/connection.js');
 
 var Inventory = connection.define('inventory', {
 	inventoryId: {
@@ -51,8 +50,8 @@ var inventory = {
 		 }).catch(function(error) {
 		 	cb(error);
 		 });
-	} // create  	
+	} // create
 
-}// loadoutn functions 
+}// loadoutn functions
 
 module.exports = inventory;

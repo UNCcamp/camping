@@ -1,5 +1,4 @@
 var Sequelize = require ('sequelize');
-var connection= require('../config/connection.js');
 
 var Location = connection.define('location', {
 	locationId: {
@@ -36,7 +35,7 @@ var Location = connection.define('location', {
             }
 		 });
 	  }
-	}	
+	}
 }); // location
 
 Location.sync(); // Syncs to the DB
@@ -61,8 +60,8 @@ var location = {
 		 }).catch(function(error) {
 		 	cb(error);
 		 });
-	} // create  
+	} // create
 
-}// location functions 
+}// location functions
 
 module.exports = location;

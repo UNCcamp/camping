@@ -1,173 +1,19 @@
-<html lang="en" style="height: 655px;"><head>
-    <meta charset="utf-8">
-    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
-    <title>Responsive Sidebar Menu - Bootsnipp.com</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
-            body,html{
-    height: 100%;
-  }
+<!DOCTYPE html>
+<html lang="en" style="height: 655px;">
 
-  .bootlogo {
-    height: 180px;
-  }
-  /* remove outer padding */
-  .main .row{
-    padding: 0px;
-    margin: 0px;
-  }
-  
-  /*Remove rounded coners*/
-
-  nav.sidebar.navbar {
-    border-radius: 0px;
-    height: 700px;
-    position: fixed;
-  }
-
-  nav.sidebar, .main{
-    -webkit-transition: margin 200ms ease-out;
-      -moz-transition: margin 200ms ease-out;
-      -o-transition: margin 200ms ease-out;
-      transition: margin 200ms ease-out;
-  }
-
-  /* Add gap to nav and right windows.*/
-  .main{
-    padding: 10px 10px 0 10px;
-  }
-
-  /* .....NavBar: Icon only with coloring/layout.....*/
-
-  /*small/medium side display*/
-  @media (min-width: 768px) {
-
-    /*Allow main to be next to Nav*/
-    .main{
-      position: absolute;
-      width: calc(100% - 40px); /*keeps 100% minus nav size*/
-      margin-left: 40px;
-      float: right;
-    }
-
-    /*lets nav bar to be showed on mouseover*/
-    nav.sidebar:hover + .main{
-      margin-left: 200px;
-    }
-
-    /*Center Brand*/
-    nav.sidebar.navbar.sidebar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
-      margin-left: 0px;
-    }
-    /*Center Brand*/
-    nav.sidebar .navbar-brand, nav.sidebar .navbar-header{
-      text-align: center;
-      width: 100%;
-      margin-left: 0px;
-    }
-
-    /*Center Icons*/
-    nav.sidebar a{
-      padding-right: 13px;
-    }
-
-    /*adds border top to first nav box */
-    nav.sidebar .navbar-nav > li:first-child{
-      border-top: 1px #e5e5e5 solid;
-    }
-
-    /*adds border to bottom nav boxes*/
-    nav.sidebar .navbar-nav > li{
-      border-bottom: 1px #e5e5e5 solid;
-    }
-
-    /* Colors/style dropdown box*/
-    nav.sidebar .navbar-nav .open .dropdown-menu {
-      position: static;
-      float: none;
-      width: auto;
-      margin-top: 0;
-      background-color: transparent;
-      border: 0;
-      -webkit-box-shadow: none;
-      box-shadow: none;
-    }
-
-    /*allows nav box to use 100% width*/
-    nav.sidebar .navbar-collapse, nav.sidebar .container-fluid{
-      padding: 0 0px 0 0px;
-    }
-
-    /*colors dropdown box text */
-    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
-      color: #777;
-    }
-
-    /*gives sidebar width/height*/
-    nav.sidebar{
-      width: 200px;
-      height: 100%;
-      margin-left: -160px;
-      float: left;
-      z-index: 8000;
-      margin-bottom: 0px;
-    }
-
-    /*give sidebar 100% width;*/
-    nav.sidebar li {
-      width: 100%;
-    }
-
-    /* Move nav to full on mouse over*/
-    nav.sidebar:hover{
-      margin-left: 0px;
-    }
-    /*for hiden things when navbar hidden*/
-    .forAnimate{
-      opacity: 0;
-    }
-  }
-
-  /* .....NavBar: Fully showing nav bar..... */
-
-  @media (min-width: 1330px) {
-
-    /*Allow main to be next to Nav*/
-    .main{
-      width: calc(100% - 200px); /*keeps 100% minus nav size*/
-      margin-left: 200px;
-    }
-
-    /*Show all nav*/
-    nav.sidebar{
-      margin-left: 0px;
-      float: left;
-    }
-    /*Show hidden items on nav*/
-    nav.sidebar .forAnimate{
-      opacity: 1;
-    }
-  }
-
-  nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus {
-    color: #CCC;
-    background-color: transparent;
-  }
-
-  nav:hover .forAnimate{
-    opacity: 1;
-  }
-  section{
-    padding-left: 15px;
-  }
-    </style>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<head>
+  <meta charset="utf-8">
+  <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./CSS/Master.css">
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="./CSS/ProfileCarousel.css">
 </head>
-<body style="height: 655px;">
 <nav class="navbar navbar-inverse sidebar" role="navigation">
-    <div class="container-fluid">
+  <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
@@ -176,17 +22,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand bootlogo" href="#">BootCamping</a>
+      <a class="navbar-brand bootlogo" href="#">BootCamping<img src="Icons/boots.svg"></a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
       <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Profile<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
-        <li class="active"><a href="#">Campsites<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
-        <li><a href="#">Trails<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
+        <li class="active">
+          <a href="#">
+            <div class='col-xs-5'>Profile</div><img class="col-xs-offset-5 iconglyph" src="Icons/jason.svg"><span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a>
+        </li>
+        <li class="active">
+          <a href="#">
+            <div class='col-xs-5'>Campsites</div><img class="col-xs-offset-5 iconglyph" src="Icons/tent.svg"><span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a>
+        </li>
+        <li>
+          <a href="#">
+            <div class='col-xs-5'>Trails</div><img class="col-xs-offset-5 iconglyph" src="Icons/boots.svg"><span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a>
+        </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Backpacks <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-cog"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <div class='col-xs-5'>Backpacks</div><span class="caret"></span> <img class="col-xs-offset-4 iconglyph" src="Icons/backpack.svg"><span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a>
           <ul class="dropdown-menu forAnimate" role="menu">
+            <li><a href="#">BUILD A BACKPACK</a></li>
             <li><a href="#">Day Trip</a></li>
             <li><a href="#">Heavy Weight</a></li>
             <li><a href="#">Light Weight</a></li>
@@ -194,503 +51,323 @@
             <li><a href="#">Family</a></li>
           </ul>
         </li>
-        <li><a href="#">First Aid<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
-        <li><a href="#">Activities<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
+        <li>
+          <a href="#">
+            <div class='col-xs-5'>Meal―Plans</div><img class="col-xs-offset-5 iconglyph" src="Icons/thinfish.svg"><span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a>
+        </li>
+        <li>
+          <a href="#">
+            <div class='col-xs-5'>First Aid</div><img class="col-xs-offset-5 iconglyph" src="Icons/firstaid.svg"><span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a>
+        </li>
+        <li>
+          <a href="#">
+            <div class='col-xs-5'>Activities</div><img class="col-xs-offset-5 iconglyph" src="Icons/machete.svg"><span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 <div class="main">
-<!-- Content Here -->
+  <!-- Content Here -->
 </div>
-<script type="text/javascript">
-    function htmlbodyHeightUpdate(){
-    var height3 = $( window ).height()
-    var height1 = $('.nav').height()+50
-    height2 = $('.main').height()
-    if(height2 > height3){
-      $('html').height(Math.max(height1,height3,height2)+10);
-      $('body').height(Math.max(height1,height3,height2)+10);
-    }
-    else
-    {
-      $('html').height(Math.max(height1,height3,height2));
-      $('body').height(Math.max(height1,height3,height2));
-    }
-    
-  }
-  $(document).ready(function () {
-    htmlbodyHeightUpdate()
-    $( window ).resize(function() {
-      htmlbodyHeightUpdate()
-    });
-    $( window ).scroll(function() {
-      height2 = $('.main').height()
-        htmlbodyHeightUpdate()
-    });
-  });
-</script>
-
 <style type="text/css">
-        @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,400,700);
-
-body{
-    background:#e9eaed;
-  }
-    
-h1, h2, h3, h4, h5, h6{
-    font-family: 'Open Sans Condensed', sans-serif, sans-serif;
-}
-  
-.container{
-  }
-
-.wrapper{
-  position: absolute;
-  left: 50px;
-  }
-
-#header{
-  border:1px solid #ddd;
-  margin-bottom:20px;
-  }
-  
-
-
-  
-.navbar{
-  border-radius:0;
-  margin-bottom:0;
-  border:none;
-        font-family: 'Open Sans Condensed', sans-serif, sans-serif;
-
-  }
-    
-.navbar > li >a{
-    
-    }
-  
-
-  
-.navbar-header2{
-  position: absolute;
-  }
-  
-.navbar-brand2{
-  position: relative;
-  top: -110px;
-width:160px;
-height:160px;
-float:left;
-padding:0;
-margin-top:0px;
-overflow:hidden;
-border:3px solid #eee;
-margin-left:15px;
-background:#333;
-text-align:center;
-line-height:160px;
-color:#fff !important;
-font-size:2em;
-    -webkit-transition:  all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition:  all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out ;
-
-  }
-  
-  
-.site-name{
-  color:#fff;
-  font-size:2.4em;
-  float:left;
-  margin-top:-65px !important;
-  margin-left:15px;
-        font-family: 'Open Sans Condensed', sans-serif, sans-serif;
-
-  } 
-.site-description{
-  color:#fff;
-  font-size:1.3em;
-  float:left;
-  margin-top:-30px !important;
-  margin-left:15px;
-  }
-  
-.main-menu{
-  position:absolute;
-  left:190px;
-  }
-  
-.slider, .carousel{
-  max-height:260px;
-  overflow:hidden;
-  }
-  
-.carousel-control .fa-angle-left,
-.carousel-control .fa-angle-right {
-position: absolute;
-top: 50%;
-font-size:2em;
-z-index: 5;
-display: inline-block;
-}
-
-.carousel-control{
-  background-color:transparent;
-  background-image:none !important;
-  }
-  
-.carousel-control:hover,
-.carousel-control:focus {
-  color: #fff;
-  text-decoration: none;
-  background-color:transparent !important;
-  background-image:none !important;
-  outline: 0;
-}
-
-
-  
-
-  
-  
-@media (max-width: 768px) {
-.navbar-brand2{
-    max-width: 100px;
-  max-height:100px;
-  float:left;
-  margin-top:-65px;
-  margin-left:15px;
-  -webkit-transition:  all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition:  all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out ;
-  }
-  
-
-  
-
-
-.navbar{
-  border-radius:0;
-  margin-bottom:0;
-  border:none;
-  }
-  
-.main-menu{
-  left:0;
-  position:relative;
-  }
-
-
-}
-
-@media (max-width: 490px) {
-  .site-name{
-  color:#fff;
-  font-size:1.5em;
-  float:left;
-  line-height:20px;
-  margin-top:-100px !important;
-  margin-left:125px;
-  } 
-.site-description{
-  color:#fff;
-  font-size:1.3em;
-  float:left;
-  margin-top:-80px !important;
-  margin-left:125px;
-  }
-  }
-
-    </style>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,400,700);
+</style>
 </head>
+
 <body>
-<link rel="stylesheet prefetch" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-
-<div class="wrapper">
-        <div class="container">
-          <div class="row">
-                <div class="col-md-12">
-                <header id="header">
-
-  <div class="slider">
-  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item">
-      <img src="http://placehold.it/1200x400/F34336/F34336&amp;text=WORDPRESS THEME DEVELOPER">
-    </div>
-    <div class="item active">
-      <img src="http://placehold.it/1200x400/20BFA9/ffffff&amp;text=CLEAN %26 SMART">
+  <link rel="stylesheet prefetch" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <div class="wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <header id="header">
+            <div class="slider">
+              <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                  <div class="item">
+                    <img src="http://placehold.it/1200x400/F34336/F34336&amp;text=WORDPRESS THEME DEVELOPER">
+                  </div>
+                  <div class="item active">
+                    <img src="http://placehold.it/1200x400/20BFA9/ffffff&amp;text=CLEAN %26 SMART">
+                  </div>
+                </div>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                  <span class="fa fa-angle-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                  <span class="fa fa-angle-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+            <!--slider-->
+            <nav class="navbar navbar-default">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header2">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNav">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand2" href="#"><img class="img-responsive" src="http://rolyart.ro/wp-content/uploads/2016/07/roland-maruntelu-freelancer-romania.jpg"></a>
+                <span class="site-name"><b>Jason</b> Voorhees</span>
+                <span class="site-description">worpress theme developer</span>
+              </div>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="nav main-menu navbar-nav">
+                  <li><a href="#"><i class="fa fa-home"></i> HOME</a></li>
+                  <li><a href="#">Link</a></li>
+                  <li><a href="#">Link</a></li>
+                </ul>
+                <ul class="nav  navbar-nav navbar-right">
+                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
+              </div>
+              <!-- /.navbar-collapse -->
+            </nav>
+            <div class="col-md-9"> HELLO WORLD THIS IS A PSEUDO BIO I'm Jason Voorhees. When I went to summer camp as a kid some bullies decided to ignore me as I drowned because they were to busy trying to get laid. So my mommy decided to take revenge my killing any campers who come to camp Crystal Lake. One day I found someone who pretended to by my mommy. So I killed her and all her friends. Then some pot smoking hippies lit me on fire and I found a hockey mask.</div>
+          </header>
+          <!--/#HEADER-->
+          <script type="text/javascript">
+          </script>
+        </div>
+      </div>
     </div>
   </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="fa fa-angle-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="fa fa-angle-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-                  </div><!--slider-->
-                  <nav class="navbar navbar-default">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header2">
-
-                          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNav">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                          </button>
-                          <a class="navbar-brand2" href="#"><img class="img-responsive" src="http://rolyart.ro/wp-content/uploads/2016/07/roland-maruntelu-freelancer-romania.jpg"></a>
-                          <span class="site-name"><b>Roland</b> Maruntelu</span>
-                          <span class="site-description">worpress theme developer</span>
-                        </div>
-                    
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="mainNav">
-                          <ul class="nav main-menu navbar-nav">
-                            <li><a href="#"><i class="fa fa-home"></i> HOME</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                          </ul>
-                          
-                           <ul class="nav  navbar-nav navbar-right">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                          </ul>
-                        </div><!-- /.navbar-collapse -->
-
-          </nav>
-          <div> HELLO WORLD THIS IS A PSEUDO BIO</div>
-                </header><!--/#HEADER-->
-<script type="text/javascript">
-
-</script>
-
-
-</div></div></div></div></body>
-
-<title>Simple Carousel - Bootsnipp.com</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
-      
-.carousel2 {
-    position: absolute;
-    top: 400px;
-    left: 50px;
-    margin-bottom: 0;
-    padding: 0 40px 30px 40px;
-}
-
-.carousel3 {
-    position: absolute;
-    top: 700px;
-    left: 50px;
-    margin-bottom: 0;
-    padding: 0 40px 30px 40px;
-}
-
-.carousel4 {
-    position: absolute;
-    top: 1000px;
-    left: 50px;
-    margin-bottom: 0;
-    padding: 0 40px 30px 40px;
-}
-/* The controlsy */
-.carousel-control {
-  left: -12px;
-    height: 40px;
-  width: 40px;
-    background: none repeat scroll 0 0 #222222;
-    border: 4px solid #FFFFFF;
-    border-radius: 23px 23px 23px 23px;
-    margin-top: 90px;
-}
-.carousel-control.right {
-  right: -12px;
-}
-/* The indicators */
-.carousel-indicators {
-  right: 50%;
-  top: auto;
-  bottom: -10px;
-  margin-right: -19px;
-}
-/* The colour of the indicators */
-.carousel-indicators li {
-  background: #cecece;
-}
-.carousel-indicators .active {
-background: #428bca;
-}
-    </style>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+</body>
 </head>
+
 <body>
-<div class="container">
+  <div class="container">
     <div class="row">
-    <div class="col-md-12">
-                
-                <div id="Carousel" class="carousel2 slide">
-                 <div id="CampSiteCarousel">Camp Sites</div>
-                <ol class="carousel-indicators">
-                    <li data-target="#Carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#Carousel" data-slide-to="1"></li>
-                    <li data-target="#Carousel" data-slide-to="2"></li>
-                </ol>
-                 
-                <!-- Carousel items -->
-                <div class="carousel-inner">
-                    
-                <div class="item active">
-                  <div class="row">
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                  </div><!--.row-->
-                </div><!--.item-->
-                 
-                <div class="item">
-                  <div class="row">
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                  </div><!--.row-->
-                </div><!--.item-->
-                 
-                <div class="item">
-                  <div class="row">
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                  </div><!--.row-->
-                </div><!--.item-->
-                 
-                </div><!--.carousel-inner-->
-                  <a data-slide="prev" href="#Carousel" class="left carousel-control">‹</a>
-                  <a data-slide="next" href="#Carousel" class="right carousel-control">›</a>
-                </div><!--.Carousel-->
-                 
+      <div class="col-md-12">
+        <div id="Carousel" class="carousel2 slide">
+          <div id="CampSiteCarousel">Camp Sites</div>
+          <ol class="carousel-indicators">
+            <li data-target="#Carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#Carousel" data-slide-to="1"></li>
+            <li data-target="#Carousel" data-slide-to="2"></li>
+          </ol>
+          <!-- Carousel items -->
+          <div class="carousel-inner">
+            <div class="item active">
+              <div class="row">
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+              </div>
+              <!--.row-->
+            </div>
+            <!--.item-->
+            <div class="item">
+              <div class="row">
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+              </div>
+              <!--.row-->
+            </div>
+            <!--.item-->
+            <div class="item">
+              <div class="row">
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+              </div>
+              <!--.row-->
+            </div>
+            <!--.item-->
+          </div>
+          <!--.carousel-inner-->
+          <a data-slide="prev" href="#Carousel" class="left carousel-control">‹</a>
+          <a data-slide="next" href="#Carousel" class="right carousel-control">›</a>
+        </div>
+        <!--.Carousel-->
+      </div>
+      <div class="col-md-12">
+        <div id="Carousel2" class="carousel3 slide">
+          <div id="TrailsCarousel">Trails</div>
+          <ol class="carousel-indicators">
+            <li data-target="#Carousel2" data-slide-to="0" class="active"></li>
+            <li data-target="#Carousel2" data-slide-to="1"></li>
+            <li data-target="#Carousel2" data-slide-to="2"></li>
+          </ol>
+          <!-- Carousel items -->
+          <div class="carousel-inner">
+            <div class="item active">
+              <div class="row">
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+              </div>
+              <!--.row-->
+            </div>
+            <!--.item-->
+            <div class="item">
+              <div class="row">
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+              </div>
+              <!--.row-->
+            </div>
+            <!--.item-->
+            <div class="item">
+              <div class="row">
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+                <div class="col-md-3">
+                  <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+                </div>
+              </div>
+              <!--.row-->
+            </div>
+            <!--.item-->
+          </div>
+          <!--.carousel-inner-->
+          <a data-slide="prev" href="#Carousel2" class="left carousel-control">‹</a>
+          <a data-slide="next" href="#Carousel2" class="right carousel-control">›</a>
+        </div>
+        <!--.Carousel-->
+      </div>
     </div>
     <div class="col-md-12">
-              
-                <div id="Carousel" class="carousel3 slide">
-                   <div id="TrailsCarousel">Trails</div>
-                <ol class="carousel-indicators">
-                    <li data-target="#Carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#Carousel" data-slide-to="1"></li>
-                    <li data-target="#Carousel" data-slide-to="2"></li>
-                </ol>
-                 
-                <!-- Carousel items -->
-                <div class="carousel-inner">
-                    
-                <div class="item active">
-                  <div class="row">
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                  </div><!--.row-->
-                </div><!--.item-->
-                 
-                <div class="item">
-                  <div class="row">
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                  </div><!--.row-->
-                </div><!--.item-->
-                 
-                <div class="item">
-                  <div class="row">
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                  </div><!--.row-->
-                </div><!--.item-->
-                 
-                </div><!--.carousel-inner-->
-                  <a data-slide="prev" href="#Carousel" class="left carousel-control">‹</a>
-                  <a data-slide="next" href="#Carousel" class="right carousel-control">›</a>
-                </div><!--.Carousel-->
-                 
+      <div id="Carousel3" class="carousel4 slide">
+        <div id="BackPackCarousel">Back Packs</div>
+        <ol class="carousel-indicators">
+          <li data-target="#Carousel3" data-slide-to="0" class="active"></li>
+          <li data-target="#Carousel3" data-slide-to="1"></li>
+          <li data-target="#Carousel3" data-slide-to="2"></li>
+        </ol>
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <div class="row">
+              <div class="col-md-3">
+                <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+              </div>
+              <div class="col-md-3">
+                <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+              </div>
+              <div class="col-md-3">
+                <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+              </div>
+              <div class="col-md-3">
+                <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+              </div>
+            </div>
+            <!--.row-->
+          </div>
+          <!--.item-->
+          <div class="item">
+            <div class="row">
+              <div class="col-md-3">
+                <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+              </div>
+              <div class="col-md-3">
+                <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+              </div>
+              <div class="col-md-3">
+                <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+              </div>
+              <div class="col-md-3">
+                <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+              </div>
+            </div>
+            <!--.row-->
+          </div>
+          <!--.item-->
+          <div class="item">
+            <div class="row">
+              <div class="col-md-3">
+                <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+              </div>
+              <div class="col-md-3">
+                <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+              </div>
+              <div class="col-md-3">
+                <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+              </div>
+              <div class="col-md-3">
+                <a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a>
+              </div>
+            </div>
+            <!--.row-->
+          </div>
+          <!--.item-->
+        </div>
+        <!--.carousel-inner-->
+        <a data-slide="prev" href="#Carousel3" class="left carousel-control">‹</a>
+        <a data-slide="next" href="#Carousel3" class="right carousel-control">›</a>
+      </div>
+      <!--.Carousel-->
     </div>
   </div>
-  <div class="col-md-12">
-           
-                <div id="Carousel" class="carousel4 slide">
-                      <div id="BackPackCarousel">Back Packs</div>
-                <ol class="carousel-indicators">
-                    <li data-target="#Carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#Carousel" data-slide-to="1"></li>
-                    <li data-target="#Carousel" data-slide-to="2"></li>
-                </ol>
-                 
-                <!-- Carousel items -->
-                <div class="carousel-inner">
-                    
-                <div class="item active">
-                  <div class="row">
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                  </div><!--.row-->
-                </div><!--.item-->
-                 
-                <div class="item">
-                  <div class="row">
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                  </div><!--.row-->
-                </div><!--.item-->
-                 
-                <div class="item">
-                  <div class="row">
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                    <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                  </div><!--.row-->
-                </div><!--.item-->
-                 
-                </div><!--.carousel-inner-->
-                  <a data-slide="prev" href="#Carousel" class="left carousel-control">‹</a>
-                  <a data-slide="next" href="#Carousel" class="right carousel-control">›</a>
-                </div><!--.Carousel-->
-                 
-    </div>
   </div>
-</div><!--.container-->
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#Carousel').carousel({
-        interval: 5000
-    })
-});
-</script>
+  <!--.container-->
+  <script type="text/javascript" src="./JS/Master.js">
+  </script>
+</body>
 </body>
 
-
-</body></html>
+</html>

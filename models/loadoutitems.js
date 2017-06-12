@@ -1,5 +1,4 @@
 var Sequelize = require ('sequelize');
-var connection= require('../config/connection.js');
 
 var LoadoutItems = connection.define('loadoutItems', {
 	loadoutId: {
@@ -26,7 +25,7 @@ var LoadoutItems = connection.define('loadoutItems', {
 		 });
 	  }
 	}
-	
+
 }); // loadouts
 
 LoadoutItems.sync();
@@ -49,7 +48,7 @@ var loadoutItems = {
 		 }).catch(function(error) {
 		 	cb(error);
 		 });
-	} // create  
+	} // create
 
 }// loadout
 

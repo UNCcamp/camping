@@ -1,5 +1,4 @@
 var Sequelize = require ('sequelize');
-var connection= require('../config/connection.js');
 
 var Loadouts = connection.define('loadouts', {
 	loadoutId: {
@@ -31,8 +30,8 @@ var loadouts = {
 		 }).catch(function(error) {
 		 	cb(error);
 		 });
-	} // create  
+	} // create
 
-}// loadouts functions 
+}// loadouts functions
 
 module.exports = loadouts;

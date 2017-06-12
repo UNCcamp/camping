@@ -1,5 +1,4 @@
 var Sequelize = require ('sequelize');
-var connection= require('../config/connection.js');
 
 var Activity = connection.define('activity', {
 	activityId: {
@@ -47,7 +46,7 @@ var activity = {
 		 }).catch(function(error) {
 		 	cb(error);
 		 });
-	} // create  
+	} // create
 
 }// activity
 

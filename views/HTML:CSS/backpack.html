@@ -163,8 +163,8 @@
   <body>
     <div class="col-md-12">
       <div class=" col-md-5 form-group">
-        <label for="usr">Back Pack Build: (i.e. "Day Trip", "Winter Gear")</label>
-        <input type="text" class="form-control" id="usr">
+        <label for="BackPackTitle">Back Pack Build: (i.e. "Day Trip", "Winter Gear")</label>
+        <input type="text" class="form-control" id="BackPackTitle">
       </div>
       <div class=" col-md-6 form-group">
         <label for="BackPackImg">Back Pack Image (i.e. "Osprey Atmos 65", "Deuter Fox 30", "North Face Terra 55")</label>
@@ -386,7 +386,10 @@
           </div>
         </div>
       </div>
-      <button type="button" class="col-md-offset-9 btn btn-info">Add Item</button>
+      <div class=" col-md-offset-7 col-md-2 form-group">
+        <input type="text" class="form-control" id="NewItem">
+      </div>
+      <button type="button" class=" btn btn-info">Add Item</button>
       <button type="button" class=" btn btn-success">Build Backpack</button>
     </div>
     <script type="text/javascript">

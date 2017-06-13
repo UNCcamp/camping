@@ -146,7 +146,7 @@ function trailCall() {
             text.append(num + ". <br>");
             text.append("Trail Name: " + response.RECDATA[i].TrailName + "<br>");
             text.append("Trail Length: " + response.RECDATA[i].SegmentLength + "<br>");
-            text.append("GEO: " + response.RECDATA[i].GEOM + "<br>");
+            // text.append("GEO: " + response.RECDATA[i].GEOM + "<br>");
             //append body to div
             res.append(text);
             var search = $("<button class='trail'>");
@@ -156,18 +156,23 @@ function trailCall() {
             res.append(search);
             res.append("<br><br><hr>");
             $("#trails").append(res);
-            var popup = new mapboxgl.Popup({ offset: 25 })
-                .setText('Trail Name: ' + response.RECDATA[i].TrailName +
-                        '<br>Trail Length: ' + response.RECDATA[i].SegmentLength);
-            // create DOM element for the marker
-            var el = document.createElement('div');
-            el.id = 'marker';
-            console.log(campground.FacilityLongitude, campground.FacilityLatitude);
-            // create the marker
-            new mapboxgl.Marker(el, { offset: [-25, -25] })
-                .setLngLat([campground.FacilityLongitude, campground.FacilityLatitude])
-                .setPopup(popup) // sets a popup on this marker
-                .addTo(map);
+            var geoLine = response.RECDATA[i].GEOM;
+            console.log(geoLine);
+            var linestring = new Array();
+            linestring = geoLine.split("(");
+            console.log(linestring);            
+            // var popup = new mapboxgl.Popup({ offset: 25 })
+            //     .setText('Trail Name: ' + response.RECDATA[i].TrailName +
+            //             '<br>Trail Length: ' + response.RECDATA[i].SegmentLength);
+            // // create DOM element for the marker
+            // var el = document.createElement('div');
+            // el.id = 'marker';
+            // console.log(campground.FacilityLongitude, campground.FacilityLatitude);
+            // // create the marker
+            // new mapboxgl.Marker(el, { offset: [-25, -25] })
+            //     .setLngLat([campground.FacilityLongitude, campground.FacilityLatitude])
+            //     .setPopup(popup) // sets a popup on this marker
+            //     .addTo(map);
             num++;
         }
 

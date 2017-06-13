@@ -7,3 +7,12 @@
   left: 50px;
   background-color: white;
 }
+
+html{
+  background-image: url("../icons/campCrystalLake.jpg");
+  background-color: transparent;
+}
+body {
+background-color: transparent;
+color:#def0ac;
+}

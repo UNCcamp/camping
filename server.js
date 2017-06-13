@@ -6,8 +6,20 @@ const express = require("express"),
 
 var path = require("path");
 var app = express();
+ var hbs = exphbs.create({
+    // Specify helpers which are only registered on this instance.
+    helpers: {
+    section: function(name, options){
+        if(!this._sections) this._sections = {};
+        this._sections[name] = options.fn(this);
+        return null;
+    }
+  }
+});
+
 const PORT = process.env.PORT || 8080;
-app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.engine("handlebars", hbs.engine);
+app.locals.layout = "main";
 //var db = require("./models");
 
 app.set("view engine", "handlebars");
@@ -24,3 +36,8 @@ app.use(pageRoutes);
     console.log("App listening on PORT " + PORT);
   });
 //});
+
+
+// if(!this._sections) this._sections = {};
+// if(!this._sections[name]) this._sections[name] = [];
+// this._sections[name].push(options.fn(this));

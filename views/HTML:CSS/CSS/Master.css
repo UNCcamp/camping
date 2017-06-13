@@ -7,7 +7,7 @@ html {
   height: 28px;
   width: 28px;
   z-index: 1;
-  background-color: transparent;
+  background-color: white;
 }
 
 .navbar-header {
@@ -23,18 +23,14 @@ html {
   margin: 0px;
 }
 
-.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
-    background-color: #1c6d2e;
-    color: red}
+
 /*Remove rounded coners*/
 
 nav.sidebar.navbar {
-  background-color: #267424;
   border-radius: 0px;
   height: 700px;
   position: fixed;
 }
-
 
 nav.sidebar,
 .main {
@@ -88,11 +84,11 @@ nav.sidebar,
   }
   /*adds border top to first nav box */
   nav.sidebar .navbar-nav > li:first-child {
-    border-top: 1px #def0ac solid;
+    border-top: 1px #e5e5e5 solid;
   }
   /*adds border to bottom nav boxes*/
   nav.sidebar .navbar-nav > li {
-    border-bottom: 1px #def0ac solid;
+    border-bottom: 1px #e5e5e5 solid;
   }
   /* Colors/style dropdown box*/
   nav.sidebar .navbar-nav .open .dropdown-menu {
@@ -112,7 +108,7 @@ nav.sidebar,
   }
   /*colors dropdown box text */
   .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
-    color: #def0ac;
+    color: #777;
   }
   /*gives sidebar width/height*/
   nav.sidebar {
@@ -160,10 +156,9 @@ nav.sidebar,
 
 nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover,
 nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus {
-  color: red;
+  color: #CCC;
   background-color: transparent;
 }
-
 
 nav:hover .forAnimate {
   opacity: 1;
@@ -225,7 +220,7 @@ h6 {
   background: #333;
   text-align: center;
   line-height: 160px;
-  color: #def0ac !important;
+  color: #fff !important;
   font-size: 2em;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -234,7 +229,7 @@ h6 {
 }
 
 .site-name {
-  color: #def0ac;
+  color: #fff;
   font-size: 2.4em;
   float: left;
   margin-top: -65px !important;
@@ -243,7 +238,7 @@ h6 {
 }
 
 .site-description {
-  color: #def0ac;
+  color: #fff;
   font-size: 1.3em;
   float: left;
   margin-top: -30px !important;
@@ -277,7 +272,7 @@ h6 {
 
 .carousel-control:hover,
 .carousel-control:focus {
-  color: #def0ac;
+  color: #fff;
   text-decoration: none;
   background-color: transparent !important;
   background-image: none !important;
@@ -309,7 +304,7 @@ h6 {
 
 @media (max-width: 490px) {
   .site-name {
-    color: #def0ac;
+    color: #fff;
     font-size: 1.5em;
     float: left;
     line-height: 20px;
@@ -317,31 +312,10 @@ h6 {
     margin-left: 125px;
   }
   .site-description {
-    color: #def0ac;
+    color: #fff;
     font-size: 1.3em;
     float: left;
     margin-top: -80px !important;
     margin-left: 125px;
   }
-}
-
-
-.navbar-inverse .navbar-nav>li>a {
-    color: #def0ac;
-}
-
-.navbar-inverse .navbar-nav>li>a:hover,
-.navbar-inverse .navbar-nav>li>a:focus
- {
-    color: red;
-}
-
-.navbar>.container-fluid .navbar-brand {
-  color: #def0ac;
-}
-
-.navbar>.container-fluid .navbar-brand:hover,
-.navbar>.container-fluid .navbar-brand:focus
- {
-  color: red;
 }

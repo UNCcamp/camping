@@ -30,7 +30,8 @@ $(function() {
                 return false;
                 break;
             case "register-form":
-                var $rg_username=$('#register_username').val();
+                var $rg_username=$('#register_firstName').val();
+                var $rg_username=$('#register_lastName').val();
                 var $rg_email=$('#register_email').val();
                 var $rg_password=$('#register_password').val();
                 if ($rg_username == "ERROR") {

@@ -6,7 +6,7 @@ USE BootCamping_db;
 
 CREATE TABLE Profiles (
         profileId INT NOT NULL AUTO_INCREMENT,
-        password TEXT (600) NOT NULL,
+        password VARCHAR (250) NOT NULL,
         userName VARCHAR (50) NOT NULL,
         userCity VARCHAR (50) NOT NULL,
         userState VARCHAR (50) NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE Profiles (
         twitterID VARCHAR (30) NULL,
         facebookID VARCHAR (30) NULL,
         snapchatId VARCHAR (30) NULL,
-        status, VARCHAR (1) NOT NULL,
+        status BOOLEAN,
         PRIMARY KEY (profileId)
     );
 
@@ -37,11 +37,11 @@ CREATE TABLE Activity
         activityName VARCHAR (50) NOT NULL,
         activityDescription, VA, (200) NOT NULL,
         profileId INT,
-        PRIMARY KEY (activityId)
+        PRIMARY KEY (activityId),
         FOREIGN KEY (profileId) REFERENCES PROFILES(profileId)
         );
 
- CREATE TABLE Inventory
+CREATE TABLE Inventory
     (
         inventoryId INT NOT NULL AUTO_INCREMENT,
         profileId INT NOT NULL,
@@ -74,7 +74,7 @@ CREATE TABLE Location
         FOREIGN KEY (profileId) REFERENCES PROFILES(profileId)
         );
 
-    CREATE TABLE LoadoutItems
+CREATE TABLE LoadoutItems
     (	
         loadoutId INT NOT NULL,
         inventoryId INT NOT NULL, 

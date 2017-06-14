@@ -1,37 +1,15 @@
-var Sequelize = require ('sequelize');
-
-var Loadouts = connection.define('loadouts', {
-	loadoutId: {
-		type: Sequelize.INTEGER,
-		omitNull: true,
-		autoIncrement: true,
-		primaryKey:true
-	},
-	loadoutDescription:  {
-		type: Sequelize.text,
-		omitNull: true
-	}
-}); // loadouts
-
-Loadouts.sync();
-
-var loadouts = {
-	all: function(cb) {
-		Loadouts.findall({}).then(function(response){
-			cb(response);
-		});
-	},
-
-	create: function(description, cb) {
-		 Location.create({
-		 	loadoutDescription: description
-		 }).then(function() {
-		 	cb();
-		 }).catch(function(error) {
-		 	cb(error);
-		 });
-	} // create
-
-}// loadouts functions
-
-module.exports = loadouts;
+'use strict';
+module.exports = function(sequelize, DataTypes) {
+  var Loadouts = sequelize.define('Loadouts', {
+    loadoutId: DataTypes.INTEGER,
+    loadoutDescription: DataTypes.TEXT
+  }, {
+    classMethods: {
+      associate: function(models) {
+        // associations can be defined here
+        Loadouts.belongsTo(models.Profiles);
+      }
+    }
+  });
+  return Loadouts;
+};

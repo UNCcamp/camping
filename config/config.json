@@ -1,15 +1,15 @@
 {
   "development": {
     "username": "root",
-    "password": "",
-    "database": "BootCamping_db",
+    "password": "MY4QLP244W31rd#",
+    "database": "bootcamping_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": null,
-    "database": "database_test",
+    "database": "bootcamping_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

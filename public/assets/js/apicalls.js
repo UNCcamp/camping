@@ -12,29 +12,28 @@ var map = new mapboxgl.Map({
 //add user's geolocation
 // map.addControl(new mapboxgl.GeolocateControl());
 
-//get user's location for search -- modify for 
-$(document).on("click", ".submit", function() {
-    event.preventDefault();
-    //grab user's search parameter and use it to get coordinates
-    var call = $(this).data("kind");
-    var location = $("#location").val().trim();
-    var queryURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + location + '&sensor=false;'
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).done(function(response) {
-        //create variables for latitude and longitude of user input
-        lat = response.results[0].geometry.location.lat;
-        lng = response.results[0].geometry.location.lng;
-        // //call either campgrounds or trails function
-        if (call === "campgrounds") {
-            campgroundCall(lat, lng);
-        } else {
-            trailCall(lat, lng);
-        }
-    });
-});
+//get user's location for search -- modify for
 
+function getUserLocation() {
+      event.preventDefault();
+      //grab user's search parameter and use it to get coordinates
+      var call = $(this).data("kind");
+      var location = $("#location").val().trim();
+      var queryURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + location + '&sensor=false;'
+      $.ajax({
+          url: queryURL,
+          method: "GET"
+      }).done(function(response) {
+          //create variables for latitude and longitude of user input
+          lat = response.results[0].geometry.location.lat;
+          lng = response.results[0].geometry.location.lng;
+          // //call either campgrounds or trails function
+          if (call === "campgrounds") {
+              campgroundCall(lat, lng);
+          } else {
+              trailCall(lat, lng);
+          }
+      });
 //API call to get campgrounds in a 50 mile radius
 function campgroundCall() {
     $("#campgrounds").html("");
@@ -84,12 +83,11 @@ function campgroundCall() {
                 .addTo(map);
             num++;
         }
-
     });
 }
 
 //API call to get campsites for specific campground
-$(document).on("click", ".campsite", function() {
+function getSpecificCampground() {
     console.log($(this).data("facID"));
     var facilityID = $(this).data("facID");
     var queryURLcampsite = "https://ridb.recreation.gov/api/v1/facilities/" + facilityID + "/campsites/?apikey=1F46A83E349C407E8538DFA18D9C049A";
@@ -160,7 +158,7 @@ function trailCall() {
             console.log(geoLine);
             var linestring = new Array();
             linestring = geoLine.split("(");
-            console.log(linestring);            
+            console.log(linestring);
             // var popup = new mapboxgl.Popup({ offset: 25 })
             //     .setText('Trail Name: ' + response.RECDATA[i].TrailName +
             //             '<br>Trail Length: ' + response.RECDATA[i].SegmentLength);

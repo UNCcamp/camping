@@ -319,3 +319,29 @@ h6 {
     margin-left: 125px;
   }
 }
+
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #def0ac;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover,
+.navbar-inverse .navbar-nav>li>a:focus
+ {
+    color: red;
+}
+
+.navbar>.container-fluid .navbar-brand {
+  color: #def0ac;
+}
+
+.navbar>.container-fluid .navbar-brand:hover,
+.navbar>.container-fluid .navbar-brand:focus
+ {
+  color: red;
+}
+
+.navbar>.active {
+ background-color: #1c6d2e;;
+}
+

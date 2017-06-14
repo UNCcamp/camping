@@ -6,7 +6,7 @@ var lat = 0;
 var lng = 0;
 
 //define map
-mapboxgl.accessToken = config.mapboxKey;
+mapboxgl.accessToken = mapboxKey;
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/outdoors-v9', //stylesheet location
@@ -47,7 +47,7 @@ function campgroundCall() {
         zoom: 9
     });
     var queryURLfacility = "https://ridb.recreation.gov/api/v1/facilities/?activity=9&latitude=" + lat +
-        "&longitude=" + lng + "&radius=50&apikey=config.RIDBKey";
+        "&longitude=" + lng + "&radius=50&apikey=RIDBKey";
     console.log(queryURLfacility);
     $.ajax({
         url: queryURLfacility,
@@ -93,7 +93,7 @@ function campgroundCall() {
 $(document).on("click", ".campsite", function() {
     console.log($(this).data("facID"));
     var facilityID = $(this).data("facID");
-    var queryURLcampsite = "https://ridb.recreation.gov/api/v1/facilities/" + facilityID + "/campsites/?apikey=config.RIDBKey";
+    var queryURLcampsite = "https://ridb.recreation.gov/api/v1/facilities/" + facilityID + "/campsites/?apikey=RIDBKey";
     $.ajax({
         url: queryURLcampsite,
         method: 'GET'
@@ -131,7 +131,7 @@ function trailCall() {
         zoom: 9
     });
     //ajax call to RIDB for USFS trails
-    var queryURLtrails = "https://ridb.recreation.gov/api/v1/trails/USFS/?latitude=" + lat + "&longitude=" + lng + "&radius=5&apikey=config.RIDBKey";
+    var queryURLtrails = "https://ridb.recreation.gov/api/v1/trails/USFS/?latitude=" + lat + "&longitude=" + lng + "&radius=5&apikey=RIDBKey";
     console.log(queryURLtrails);
     $.ajax({
         url: queryURLtrails,

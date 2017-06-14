@@ -345,3 +345,9 @@ h6 {
  {
   color: red;
 }
+
+
+.navbar>.active {
+ background-color: #1c6d2e;;
+}
+

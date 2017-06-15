@@ -1,0 +1,18 @@
+.navbar{
+  position: fixed;
+  top: 0px;
+}
+.Jason{
+  position: center;
+  left: 50px;
+  background-color: transparent;
+}
+
+html{
+  background-image: url("../icons/campCrystalLake.jpg");
+  background-color: transparent;
+}
+body {
+background-color: transparent;
+color:#def0ac;
+}

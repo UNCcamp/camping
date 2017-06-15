@@ -130,7 +130,8 @@ function trailCall(lat, lng) {
         zoom: 9
     });
     //ajax call to RIDB for USFS trails
-    var queryURLtrails = "https://ridb.recreation.gov/api/v1/trails/USFS/?latitude=" + lat + "&longitude=" + lng + "&radius=50&apikey=1F46A83E349C407E8538DFA18D9C049A";
+    var queryURLtrails = "https://ridb.recreation.gov/api/v1/trails/USFS/?latitude=" 
+                         + lat + "&longitude=" + lng + "&radius=50&apikey=1F46A83E349C407E8538DFA18D9C049A";
     console.log(queryURLtrails);
     $.ajax({
         url: queryURLtrails,

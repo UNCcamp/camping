@@ -1,11 +1,9 @@
 const express = require("express"),
 
 cryptoRoutes = require("./controllers/auth/cryptoRoutes"),
-<<<<<<< HEAD
-pageRoutes = require("./routes/handbarsPageRoutes"),
-=======
+
 pageRoutes = require("./routes/htmlRoutes"),
->>>>>>> handlebarRoutes
+
 
 exphbs  = require("express-handlebars"),
 bodyParser = require("body-parser");
@@ -38,20 +36,11 @@ app.use("/auth", cryptoRoutes);
 app.use(pageRoutes);
 
 
-<<<<<<< HEAD
-// var db = require('./models');
-// db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
-  });
-// });
 
-
-=======
 var db = require('./models');
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
 });
->>>>>>> handlebarRoutes
+

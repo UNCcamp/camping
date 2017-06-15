@@ -91,44 +91,36 @@ function campgroundCall(lat, lng) {
     });
 }
 
-//API call to get campsites for specific campground
-// $(document).on("click", ".campsite", function() {
-//     console.log($(this).data("facID"));
-//     var facilityID = $(this).data("facID");
-//     var facilityLat = $(this).data("facLat");
-//     var facilityLong = $(this).data("facLong");
+//API call to get campsites for specific campground if we decide to go with this
+// function campsiteCall(campgroundID, campgroundLatitude, campgroundLongitude) {
+// 
 //         map.flyTo({
-//         center: [facilityLong, facilityLat],
+//         center: [campgroundLongitude, campgroundLatitude],
 //         zoom: 15
 //     });
-//     var queryURLcampsite = "https://ridb.recreation.gov/api/v1/facilities/" + facilityID + "/campsites/?apikey=1F46A83E349C407E8538DFA18D9C049A";
+//     var queryURLcampsite = "https://ridb.recreation.gov/api/v1/facilities/" + campgroundID + "/campsites/?apikey=1F46A83E349C407E8538DFA18D9C049A";
 //     $.ajax({
 //         url: queryURLcampsite,
 //         method: 'GET'
 //     }).done(function(response) {
 //         console.log(response.RECDATA);
 //         var num = 1;
+//         var result = [];
 //         for (var i = 0; i < response.RECDATA.length; i++) {
-//             var res = $("<div class='info'>");
-//             // res.attr("data", response.RECDATA[i].FacilityID);
-//             var text = $("<p>");
-//             text.append(num + ". <br>");
-//             text.append("Campsite Name: " + response.RECDATA[i].CampsiteName + "<br>");
-//             text.append("Campsite Type: " + response.RECDATA[i].CampsiteType + "<br>");
-//             text.append("Loop: " + response.RECDATA[i].Loop + "<br>");
-//             //append body to div
-//             res.append(text);
-//             var search = $("<button class='campsite'>");
-//             search.attr("data", response.RECDATA[i].CampsiteID);
-//             search.text("Choose Campsite");
-//             //append button to div to search campsites of facility
-//             res.append(search);
-//             res.append("<br><br><hr>");
-//             $("#campsites").append(res);
+//             var campsiteName = response.RECDATA[i].CampsiteName;
+//             var campsiteType = response.RECDATA[i].CampsiteType;
+//             var loop = response.RECDATA[i].Loop;
+//             results.push({
+//             name: campsiteName,
+//             type: campsiteType,
+//             loop: loop
+//             });
+//        
 //             num++;
-//         };
+//         }
+//         return result;
 //     });
-// });
+//   }
 
 
 //API call to get trails in a 50 mile radius around user's specified location
@@ -196,6 +188,7 @@ function trailCall(lat, lng) {
     });
 } //end function trailCall
 
+// function to map trail GeoLine on map -- not working because it creates too many layers, work in progress
 // $(document).on("click", ".trail", function() {
 //     //get and modify trail's linestring
 //             var geoLine = $(this).data("LineString");

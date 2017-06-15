@@ -14,7 +14,7 @@ var map = new mapboxgl.Map({
     zoom: 2.9 //starting zoom
 });
 
-//get user's location for search -- modify for 
+//get user's location for search -- modify for
 function userLocation(typeOfCall, location, cb) {
     //grab user's search parameter and use it to get coordinates
     var call = typeOfCall;
@@ -66,13 +66,15 @@ function campgroundCall(lat, lng) {
             var campLng = campground.FacilityLongitude;
             var imageURL = "https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B"
              + campLng + "%2C" + campLat + "%5D%7D)/" + campLng + "," + campLat + ",12/250x250?access_token=" + mapboxKey;
-            result.push({name: campName, 
-                         description: campDesc, 
-                         directions: campDir, 
-                         ID: campID, 
+
+            result.push({name: campName,
+                         description: campDesc,
+                         directions: campDir,
+                         ID: campID,
                          latitude: campLat, 
                          longitude: campLng,
                          image: imageURL});
+
             // create the popup
             var popup = new mapboxgl.Popup({ offset: 25 })
                 .setText('Campground Name: ' + campName);
@@ -185,7 +187,7 @@ function trailCall(lat, lng) {
                 .addTo(map);
         }
         console.log(result);
-    }); 
+    });
 } //end function trailCall
 
 // $(document).on("click", ".trail", function() {
@@ -225,5 +227,5 @@ function trailCall(lat, lng) {
 //                     "line-color": "#888",
 //                     "line-width": 8
 //                 }
-//             });   
+//             });
 // });

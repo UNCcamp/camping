@@ -1,53 +1,16 @@
-var Sequelize = require ('sequelize');
-
-var Activity = connection.define('activity', {
-	activityId: {
-		type: Sequelize.INTEGER,
-		omitNull: true,
-		autoIncrement: true,
-		primaryKey:true
-	},
-	activityName:  {
-		type: Sequelize.string,
-		omitNull: true
-	},
-	activityDescription:  {
-		type: Sequelize.text,
-		omitNull: true
-	}
-},
-	{
-	classMethods: {
-		associate: function(models){
-			Activity.belongsTo(models.Profiles, {
-            foreignKey: {
-              allowNull: false
-            }
-		 });
-	  }
-	}
-  }); // Activities
-
-Activity.sync();
-
-var activity = {
-	all: function(cb) {
-		Activity.findall({}).then(function(response){
-			cb(response);
-		});
-	},
-
-	create: function(activity, description, cb) {
-		 Location.create({
-		 	activityName: activity,
-		 	activityDescription: description
-		 }).then(function() {
-		 	cb();
-		 }).catch(function(error) {
-		 	cb(error);
-		 });
-	} // create
-
-}// activity
-
-module.exports = activity;
+'use strict';
+module.exports = function(sequelize, DataTypes) {
+  var Activity = sequelize.define('Activity', {
+    activityID: DataTypes.INTEGER,
+    activityName: DataTypes.STRING,
+    activityDescription: DataTypes.TEXT
+  }, {
+    classMethods: {
+      associate: function(models) {
+        // associations can be defined here
+        Activity.belongsTo(models.Profiles);
+      }
+    }
+  });
+  return Activity;
+};

@@ -1,67 +1,19 @@
-var Sequelize = require ('sequelize');
+'use strict';
+module.exports = function(sequelize, DataTypes) {
+  var Location = sequelize.define('Location', {
+    locationID: DataTypes.INTEGER,
+    locationName: DataTypes.STRING,
+    locationDescription: DataTypes.TEXT,
+    latLocation: DataTypes.DECIMAL,
+    longLocation: DataTypes.DECIMAL
+  }, {
+    classMethods: {
+      associate: function(models) {
+        // associations can be defined here
+        Location.belongsTo(models.Profiles);
+      }
+    }
+  });
+  return Location;
+};
 
-var Location = connection.define('location', {
-	locationId: {
-		type: Sequelize.INTEGER,
-		omitNull: true,
-		autoIncrement: true,
-		primaryKey:true
-	},
-
-	locationName:  {
-		type: Sequelize.string,
-		omitNull: true
-	},
-
-	locationDescription:  {
-		type: Sequelize.text,
-		omitNull: true
-	},
-	latLocation: {
-		type: Sequelize.decimal,
-		omitNull: true,
-
-	},
-	longLocation: {
-		type: Sequelize.decimal,
-		omitNull: true,
-	},
-	{
-	classMethods: {
-		associate: function(models){
-			Location.belongsTo(models.Profiles, {
-            foreignKey: {
-              allowNull: false
-            }
-		 });
-	  }
-	}
-}); // location
-
-Location.sync(); // Syncs to the DB
-
-// Display all, create and Update functions
-
-var location = {
-	all: function(cb) {
-		Location.findall({}).then(function(response){
-			cb(response);
-		});
-	},
-
-	create: function(lName,lDes,laLoc,loLoc, cb) {
-		 Location.create({
-		 	locationName: lName,
-		 	locationDescription: lDes,
-		 	latLocation: laLoc,
-		 	longLocation: loLoc
-		 }).then(function() {
-		 	cb();
-		 }).catch(function(error) {
-		 	cb(error);
-		 });
-	} // create
-
-}// location functions
-
-module.exports = location;

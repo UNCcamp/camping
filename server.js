@@ -1,8 +1,10 @@
 const express = require("express"),
-      cryptoRoutes = require("./controllers/auth/cryptoRoutes"),
-      pageRoutes = require("./routes/handbarsPageRoutes"),
-      exphbs  = require("express-handlebars"),
-      bodyParser = require("body-parser");
+
+cryptoRoutes = require("./controllers/auth/cryptoRoutes"),
+pageRoutes = require("./routes/htmlRoutes"),
+
+exphbs  = require("express-handlebars"),
+bodyParser = require("body-parser");
 
 var path = require("path");
 var app = express();
@@ -27,17 +29,14 @@ app.use(express.static(path.join(__dirname, "node_modules")));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
+
 app.use("/auth", cryptoRoutes);
 app.use(pageRoutes);
 
 
-//db.sequelize.sync().then(function() {
+var db = require('./models');
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
-//});
-
-
-// if(!this._sections) this._sections = {};
-// if(!this._sections[name]) this._sections[name] = [];
-// this._sections[name].push(options.fn(this));
+});

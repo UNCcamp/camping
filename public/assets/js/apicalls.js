@@ -64,6 +64,17 @@ function campgroundCall(lat, lng) {
             var campID = campground.FacilityID;
             var campLat = campground.FacilityLatitude;
             var campLng = campground.FacilityLongitude;
+            var imageURL = "https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B" + campLng + "%2C" + campLat + "%5D%7D)/" + campLng + "," + campLat + ",12/250x250?access_token=" + mapboxKey;
+            result.push({
+                name: campName,
+                description: campDesc,
+                directions: campDir,
+                ID: campID,
+                latitude: campLat,
+                longitude: campLng,
+                image: imageURL
+            });
+
             var imageURL = "https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B"
              + campLng + "%2C" + campLat + "%5D%7D)/" + campLng + "," + campLat + ",12/250x250?access_token=" + mapboxKey;
 
@@ -74,6 +85,7 @@ function campgroundCall(lat, lng) {
                          latitude: campLat, 
                          longitude: campLng,
                          image: imageURL});
+
 
             // create the popup
             var popup = new mapboxgl.Popup({ offset: 25 })
@@ -166,17 +178,25 @@ function trailCall(lat, lng) {
             // get latitude and longitude for trail
             var latlng = geoLine[0];
             console.log(latlng);
-
+            var trailLng = geoLine[0][0];
+            var trailLat = geoLine[0][1];
+            console.log(trailLat + ", " + trailLng);
+            console.log(latlng);
+            var imageURL = "https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B" 
+                           + trailLng + "%2C" + trailLat + "%5D%7D)/" + trailLng + "," + trailLat + ",12/250x250?access_token=" + mapboxKey;
+            console.log(imageURL);
             result.push({
                 name: trailName,
                 length: trailLength,
-                number: trailNumber,
+                number: trailNo,
                 linestring: trailGEOM,
-                coordinates: latlng
+                latitude: trailLat,
+                longitude: trailLng,
+                image: imageURL
             });
             //add marker and popup for trail
             var popup = new mapboxgl.Popup({ offset: 25 })
-                .setText('Trail Name: ' + trailName);
+                .setText('Trail Name: ' + trailName + '\nTrail Length: ' + trailLength + 'miles');
             // create DOM element for the marker
             var el = document.createElement('div');
             el.id = 'marker-trail';

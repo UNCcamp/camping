@@ -34,7 +34,7 @@ nightmare
   .click("#checkbox6")
   .click("#checkbox10")
   .click("#checkbox13")
-  .click(".btn btn-success")
+  .click(".btn-success")
   // End test
   .end()
   // Execute commands

@@ -64,7 +64,6 @@ function campgroundCall(lat, lng) {
             var campID = campground.FacilityID;
             var campLat = campground.FacilityLatitude;
             var campLng = campground.FacilityLongitude;
-<<<<<<< HEAD
             var imageURL = "https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B" + campLng + "%2C" + campLat + "%5D%7D)/" + campLng + "," + campLat + ",12/250x250?access_token=" + mapboxKey;
             result.push({
                 name: campName,
@@ -75,7 +74,7 @@ function campgroundCall(lat, lng) {
                 longitude: campLng,
                 image: imageURL
             });
-=======
+
             var imageURL = "https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B"
              + campLng + "%2C" + campLat + "%5D%7D)/" + campLng + "," + campLat + ",12/250x250?access_token=" + mapboxKey;
 
@@ -87,7 +86,7 @@ function campgroundCall(lat, lng) {
                          longitude: campLng,
                          image: imageURL});
 
->>>>>>> 9a4de6bdb9a7a81d523de9d9ef5f282fb71b95be
+
             // create the popup
             var popup = new mapboxgl.Popup({ offset: 25 })
                 .setText('Campground Name: ' + campName);

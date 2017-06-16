@@ -6,9 +6,11 @@ router.post('/login', function (req, res) {
   var username = req.body.username;
   var pass = req.body.pass;
   if((auth.decrypt(/*from server **/)) === pass) {
-    res.send(true);
+    req.session.userAuth = userId;
+    res.redirect("/profile");
   }
-  res.send(false);
+  res.status(401)        // HTTP unauthorized
+  .send('Not authorized');
 });
 
 router.post('/adduser', function (req, res) {

@@ -27,12 +27,28 @@ router.get("/mealplan", function (req, res) {
 });
 
 router.get("/profile", function (req, res) {
-  // query.getUserProfile(userID)
-  // .then(function(result){
-    res.render("ProfileMain");
-  // });
-
+   if(true) { // will have to store user session here
+     //query.getUserProfile(userID)
+     // .then(function(result){
+     res.render("ProfileMain") //{
+      //    result.imageURL,
+      //    result.campsites,
+      //    result.Trails
+      //
+      //
+      //  });
+     // });
+   }
+   else {
+     res.status("401")
+     .send("not authorized");
+   }
 });
+
+router.get("/login", function (req, res) {
+    res.render("modalLogin");
+});
+
 
 router.get("/trail", function (req, res) {
     res.render("TrailResult");

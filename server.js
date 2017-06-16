@@ -1,8 +1,6 @@
 const express = require("express"),
-
 cryptoRoutes = require("./controllers/auth/cryptoRoutes"),
 pageRoutes = require("./routes/htmlRoutes"),
-
 exphbs  = require("express-handlebars"),
 bodyParser = require("body-parser");
 
@@ -32,7 +30,6 @@ app.use(bodyParser.json())
 
 app.use("/auth", cryptoRoutes);
 app.use(pageRoutes);
-
 
 var db = require('./models');
 db.sequelize.sync().then(function() {

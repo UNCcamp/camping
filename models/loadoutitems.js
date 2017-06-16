@@ -1,13 +1,15 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var LoadoutItems = sequelize.define('LoadoutItems', {
-    loadoutId: DataTypes.INTEGER,
-    inventoryId: DataTypes.INTEGER,
+    itemName: DataTypes.STRING,
     itemQuantity: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
-      LoadoutItems.belongsTo(models.Inventory);
+          Loadoutitems.belongsTo(models.Loadouts,{
+          foreignKey: 'loadoutId',
+          onDelete: 'CASCADE'
+          })
       }
     }
   });

@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-          Interests.belongsTo(models.Profiles,{
+          Inventory.belongsTo(models.Profiles,{
           foreignKey: 'v_profileId',
           onDelete: 'CASCADE'
         }), // associations can be defined here

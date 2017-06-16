@@ -1,13 +1,18 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Loadouts = sequelize.define('Loadouts', {
-    loadoutId: DataTypes.INTEGER,
     loadoutDescription: DataTypes.TEXT
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
-        Loadouts.belongsTo(models.Profiles);
+         Loadouts.belongsTo(models.Profiles,{
+          foreignKey: 'o_profileId',
+          onDelete: 'CASCADE'
+        }), // associations can be defined here
+          Loadouts.hasMany(models.Locationpix,{
+          foreignKey: 'loadoutId',
+          as: 'loadoutitems'
+        }) // associations can be defined here
       }
     }
   });

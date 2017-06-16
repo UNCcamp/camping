@@ -8,9 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      interestID: {
-        type: Sequelize.INTEGER
-      },
       interestName: {
         type: Sequelize.STRING
       },
@@ -24,7 +21,17 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      profileId: {   // <- This is the new section to add
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Profiles',
+          key: 'id',
+          as: 'i_profileId'
+        }
       }
+
     });
   },
   down: function(queryInterface, Sequelize) {

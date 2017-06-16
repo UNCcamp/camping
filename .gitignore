@@ -44,3 +44,6 @@ node_modules/*
 #########
 connnection.js
 
+#Ignore Migration #
+migrations/*
+

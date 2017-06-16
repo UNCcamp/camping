@@ -351,3 +351,10 @@ h6 {
  background-color: #1c6d2e;;
 }
 
+.btn-success {
+  height: 34px;
+}
+
+.glyphicon {
+  line-height: 0;
+}

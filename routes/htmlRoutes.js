@@ -1,4 +1,5 @@
 const express = require("express");
+var query = require("../controllers/controller")
 var router = express.Router();
 
 router.get("/", function (req, res) {
@@ -26,7 +27,11 @@ router.get("/mealplan", function (req, res) {
 });
 
 router.get("/profile", function (req, res) {
+  // query.getUserProfile(userID)
+  // .then(function(result){
     res.render("ProfileMain");
+  // });
+
 });
 
 router.get("/trail", function (req, res) {

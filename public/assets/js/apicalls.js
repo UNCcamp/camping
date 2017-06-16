@@ -14,7 +14,7 @@ var map = new mapboxgl.Map({
     zoom: 2.9 //starting zoom
 });
 
-//get user's location for search -- modify for 
+//get user's location for search -- modify for
 function userLocation(typeOfCall, location, cb) {
     //grab user's search parameter and use it to get coordinates
     var call = typeOfCall;
@@ -64,15 +64,30 @@ function campgroundCall(lat, lng) {
             var campID = campground.FacilityID;
             var campLat = campground.FacilityLatitude;
             var campLng = campground.FacilityLongitude;
+            var imageURL = "https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B" 
+                           + campLng + "%2C" + campLat + "%5D%7D)/" + campLng + "," + campLat + ",12/250x250?access_token=" + mapboxKey;
+            result.push({
+                name: campName,
+                description: campDesc,
+                directions: campDir,
+                ID: campID,
+                latitude: campLat,
+                longitude: campLng,
+                image: imageURL
+            });
+
             var imageURL = "https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B"
-             + campLng + "%2C" + campLat + "%5D%7D)/" + campLng + "," + campLat + ",12/250x250?access_token=" + mapboxKey;
-            result.push({name: campName, 
-                         description: campDesc, 
-                         directions: campDir, 
-                         ID: campID, 
+                           + campLng + "%2C" + campLat + "%5D%7D)/" + campLng + "," + campLat + ",12/250x250?access_token=" + mapboxKey;
+
+            result.push({name: campName,
+                         description: campDesc,
+                         directions: campDir,
+                         ID: campID,
                          latitude: campLat, 
                          longitude: campLng,
                          image: imageURL});
+
+
             // create the popup
             var popup = new mapboxgl.Popup({ offset: 25 })
                 .setText('Campground Name: ' + campName);
@@ -89,44 +104,36 @@ function campgroundCall(lat, lng) {
     });
 }
 
-//API call to get campsites for specific campground
-// $(document).on("click", ".campsite", function() {
-//     console.log($(this).data("facID"));
-//     var facilityID = $(this).data("facID");
-//     var facilityLat = $(this).data("facLat");
-//     var facilityLong = $(this).data("facLong");
+//API call to get campsites for specific campground if we decide to go with this
+// function campsiteCall(campgroundID, campgroundLatitude, campgroundLongitude) {
+// 
 //         map.flyTo({
-//         center: [facilityLong, facilityLat],
+//         center: [campgroundLongitude, campgroundLatitude],
 //         zoom: 15
 //     });
-//     var queryURLcampsite = "https://ridb.recreation.gov/api/v1/facilities/" + facilityID + "/campsites/?apikey=1F46A83E349C407E8538DFA18D9C049A";
+//     var queryURLcampsite = "https://ridb.recreation.gov/api/v1/facilities/" + campgroundID + "/campsites/?apikey=1F46A83E349C407E8538DFA18D9C049A";
 //     $.ajax({
 //         url: queryURLcampsite,
 //         method: 'GET'
 //     }).done(function(response) {
 //         console.log(response.RECDATA);
 //         var num = 1;
+//         var result = [];
 //         for (var i = 0; i < response.RECDATA.length; i++) {
-//             var res = $("<div class='info'>");
-//             // res.attr("data", response.RECDATA[i].FacilityID);
-//             var text = $("<p>");
-//             text.append(num + ". <br>");
-//             text.append("Campsite Name: " + response.RECDATA[i].CampsiteName + "<br>");
-//             text.append("Campsite Type: " + response.RECDATA[i].CampsiteType + "<br>");
-//             text.append("Loop: " + response.RECDATA[i].Loop + "<br>");
-//             //append body to div
-//             res.append(text);
-//             var search = $("<button class='campsite'>");
-//             search.attr("data", response.RECDATA[i].CampsiteID);
-//             search.text("Choose Campsite");
-//             //append button to div to search campsites of facility
-//             res.append(search);
-//             res.append("<br><br><hr>");
-//             $("#campsites").append(res);
+//             var campsiteName = response.RECDATA[i].CampsiteName;
+//             var campsiteType = response.RECDATA[i].CampsiteType;
+//             var loop = response.RECDATA[i].Loop;
+//             results.push({
+//             name: campsiteName,
+//             type: campsiteType,
+//             loop: loop
+//             });
+//        
 //             num++;
-//         };
+//         }
+//         return result;
 //     });
-// });
+//   }
 
 
 //API call to get trails in a 50 mile radius around user's specified location
@@ -136,7 +143,8 @@ function trailCall(lat, lng) {
         zoom: 9
     });
     //ajax call to RIDB for USFS trails
-    var queryURLtrails = "https://ridb.recreation.gov/api/v1/trails/USFS/?latitude=" + lat + "&longitude=" + lng + "&radius=50&apikey=1F46A83E349C407E8538DFA18D9C049A";
+    var queryURLtrails = "https://ridb.recreation.gov/api/v1/trails/USFS/?latitude=" 
+                         + lat + "&longitude=" + lng + "&radius=50&apikey=1F46A83E349C407E8538DFA18D9C049A";
     console.log(queryURLtrails);
     $.ajax({
         url: queryURLtrails,
@@ -164,17 +172,26 @@ function trailCall(lat, lng) {
             // get latitude and longitude for trail
             var latlng = geoLine[0];
             console.log(latlng);
+            var trailLng = geoLine[0][0];
+            var trailLat = geoLine[0][1];
+            console.log(trailLat + ", " + trailLng);
+            console.log(latlng);
 
+            var imageURL = "https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B" 
+                           + trailLng + "%2C" + trailLat + "%5D%7D)/" + trailLng + "," + trailLat + ",12/250x250?access_token=" + mapboxKey;
+            console.log(imageURL);
             result.push({
                 name: trailName,
                 length: trailLength,
-                number: trailNumber,
+                number: trailNo,
                 linestring: trailGEOM,
-                coordinates: latlng
+                latitude: trailLat,
+                longitude: trailLng,
+                image: imageURL
             });
             //add marker and popup for trail
             var popup = new mapboxgl.Popup({ offset: 25 })
-                .setText('Trail Name: ' + trailName);
+                .setText('Trail Name: ' + trailName + '\nTrail Length: ' + trailLength + 'miles');
             // create DOM element for the marker
             var el = document.createElement('div');
             el.id = 'marker-trail';
@@ -185,9 +202,10 @@ function trailCall(lat, lng) {
                 .addTo(map);
         }
         console.log(result);
-    }); 
+    });
 } //end function trailCall
 
+// function to map trail GeoLine on map -- not working because it creates too many layers, work in progress
 // $(document).on("click", ".trail", function() {
 //     //get and modify trail's linestring
 //             var geoLine = $(this).data("LineString");
@@ -225,5 +243,5 @@ function trailCall(lat, lng) {
 //                     "line-color": "#888",
 //                     "line-width": 8
 //                 }
-//             });   
+//             });
 // });

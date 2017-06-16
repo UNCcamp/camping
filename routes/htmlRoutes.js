@@ -27,16 +27,16 @@ router.get("/mealplan", function (req, res) {
 });
 
 router.get("/profile", function (req, res) {
-   if(true) { // will have to store user session here
-     //query.getUserProfile(userID)
+  if(true) { // will have to store user session here
+    //query.getUserProfile(userID)
      // .then(function(result){
-     res.render("ProfileMain") //{
-      //    result.imageURL,
+     res.render("ProfileMain", {
+          imageURL:"https://prods3.imgix.net/images/articles/2017_01/Facebook-Salt-Bae-Meme-Butcher.jpg",
       //    result.campsites,
       //    result.Trails
       //
       //
-      //  });
+      });
      // });
    }
    else {
@@ -44,6 +44,12 @@ router.get("/profile", function (req, res) {
      .send("not authorized");
    }
 });
+
+router.post("/authenticate", function(req,res) {
+  
+});
+
+
 
 router.get("/login", function (req, res) {
     res.render("modalLogin");

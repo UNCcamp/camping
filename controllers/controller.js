@@ -2,10 +2,10 @@ const express = require("express");
 var m = require("../models/index");
 
 var CampQueries = {
-  getUserProfile:function(userID) {
+  getUserProfile:function(userEmail) {
     return m.Profile.findAll({
             where: {
-              id: userID
+              userName: userEmail
             }
           });
   },

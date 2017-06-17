@@ -31,7 +31,7 @@ html {
 nav.sidebar.navbar {
   background-color: #267424;
   border-radius: 0px;
-  height: 700px;
+  height: 100%;
   position: fixed;
 }
 
@@ -140,23 +140,6 @@ nav.sidebar,
 
 /* .....NavBar: Fully showing nav bar..... */
 
-@media (min-width: 1330px) {
-  /*Allow main to be next to Nav*/
-  .main {
-    width: calc(100% - 200px);
-    /*keeps 100% minus nav size*/
-    margin-left: 200px;
-  }
-  /*Show all nav*/
-  nav.sidebar {
-    margin-left: 0px;
-    float: left;
-  }
-  /*Show hidden items on nav*/
-  nav.sidebar .forAnimate {
-    opacity: 1;
-  }
-}
 
 nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover,
 nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus {

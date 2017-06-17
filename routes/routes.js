@@ -49,15 +49,8 @@ router.get("/profile", function (req, res) {
       });
     }
     else {
-      res.render("/login");
+      res.render("modalLogin");
     }
-  if(true) {
-
-   }
-   else {
-     res.status("401")
-     .send("not authorized");
-   }
 });
 
 router.post("/authenticate",function(req,res) {
@@ -69,7 +62,7 @@ router.post("/authenticate",function(req,res) {
     auth.authenticate(result[0].passWord,pass, function(isAuth){
       if(isAuth) {
         res.cookie('user', result[0].id, { expires: new Date(Date.now() + 36000000), httpOnly: true });
-        res.status("301")
+        res.status("200")
         .send("OK");
       }
       else {

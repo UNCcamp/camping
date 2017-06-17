@@ -97,7 +97,9 @@ $(function() {
       data: {email: loginEmail, pass:loginPass}
     })
     .done(function(result){
+      console.log(result);
       if(result === "OK") {
+        console.log("asdfja;skldjf;klasjdf whatattt");
         window.location = "/profile";
       }
     })

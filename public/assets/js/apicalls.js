@@ -49,7 +49,6 @@ function userLocation(typeOfCall, location, cb) {
             result = campgroundCall(lat, lng, function(result) {
                 cb(result);
             });
-
         } else {
             result = trailCall(lat, lng, function(result) {
                 cb(result);
@@ -91,7 +90,6 @@ function campgroundCall(lat, lng, callback) {
                 longitude: campLng,
                 image: imageURL
             });
-
             // create the popup
             var popup = new mapboxgl.Popup({ offset: 25 })
                 .setText('Campground Name: ' + campName);
@@ -108,9 +106,20 @@ function campgroundCall(lat, lng, callback) {
     });
 }
 
+//API call to get campsites for specific campground
+// $(document).on("click", ".campsite", function() {
+//     console.log($(this).data("facID"));
+//     var facilityID = $(this).data("facID");
+//     var facilityLat = $(this).data("facLat");
+//     var facilityLong = $(this).data("facLong");
+//         map.flyTo({
+//         center: [facilityLong, facilityLat],
+//         zoom: 15
+//     });
+//     var queryURLcampsite = "https://ridb.recreation.gov/api/v1/facilities/" + facilityID + "/campsites/?apikey=1F46A83E349C407E8538DFA18D9C049A";
 //API call to get campsites for specific campground if we decide to go with this
 // function campsiteCall(campgroundID, campgroundLatitude, campgroundLongitude) {
-// 
+//
 //         map.flyTo({
 //         center: [campgroundLongitude, campgroundLatitude],
 //         zoom: 15
@@ -122,6 +131,27 @@ function campgroundCall(lat, lng, callback) {
 //     }).done(function(response) {
 //         console.log(response.RECDATA);
 //         var num = 1;
+//         for (var i = 0; i < response.RECDATA.length; i++) {
+//             var res = $("<div class='info'>");
+//             // res.attr("data", response.RECDATA[i].FacilityID);
+//             var text = $("<p>");
+//             text.append(num + ". <br>");
+//             text.append("Campsite Name: " + response.RECDATA[i].CampsiteName + "<br>");
+//             text.append("Campsite Type: " + response.RECDATA[i].CampsiteType + "<br>");
+//             text.append("Loop: " + response.RECDATA[i].Loop + "<br>");
+//             //append body to div
+//             res.append(text);
+//             var search = $("<button class='campsite'>");
+//             search.attr("data", response.RECDATA[i].CampsiteID);
+//             search.text("Choose Campsite");
+//             //append button to div to search campsites of facility
+//             res.append(search);
+//             res.append("<br><br><hr>");
+//             $("#campsites").append(res);
+//             num++;
+//         };
+//     });
+// });
 //         var result = [];
 //         for (var i = 0; i < response.RECDATA.length; i++) {
 //             var campsiteName = response.RECDATA[i].CampsiteName;
@@ -132,7 +162,7 @@ function campgroundCall(lat, lng, callback) {
 //             type: campsiteType,
 //             loop: loop
 //             });
-//        
+//
 //             num++;
 //         }
 //         return result;
@@ -179,9 +209,7 @@ function trailCall(lat, lng, callback) {
             var trailLat = geoLine[0][1];
             // console.log(trailLat + ", " + trailLng);
             // console.log(latlng);
-
             var imageURL = "https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B" + trailLng + "%2C" + trailLat + "%5D%7D)/" + trailLng + "," + trailLat + ",12/250x250?access_token=" + mapboxKey;
-            // console.log(imageURL);
             result.push({
                 name: trailName,
                 length: trailLength,
@@ -205,9 +233,10 @@ function trailCall(lat, lng, callback) {
         }
         callback(result);
     });
-} //end function trailCall
+}
 
 // function to map trail GeoLine on map -- not working because it creates too many layers, work in progress
+
 // $(document).on("click", ".trail", function() {
 //     //get and modify trail's linestring
 //             var geoLine = $(this).data("LineString");
@@ -245,5 +274,3 @@ function trailCall(lat, lng, callback) {
 //                     "line-color": "#888",
 //                     "line-width": 8
 //                 }
-//             });
-// });

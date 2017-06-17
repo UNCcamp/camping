@@ -4,22 +4,22 @@ var mapboxKey = 'pk.eyJ1Ijoia3Jpa2FyciIsImEiOiJjajEwcmxpdmEwM2ZoMzJwZWNrc3hnYm13
 
 var lat = 0;
 var lng = 0;
-var target1 = $("#campSearch");
-console.log(target1);
-var target2 = $("#trailSearch");
-console.log(target2);
+// var target1 = $("#campSearch");
+// console.log(target1);
+// var target2 = $("#trailSearch");
+// console.log(target2);
 
 $(document).on("click", "#campgrounds", function() {
-    userLocation("trails", "yosemite", function(result) {
-    event.preventDefault();
+    var target1 = $("#campSearch");
+    userLocation("campgrounds", target1[0].attributes[0].ownerElement.value, function(result) {
   return result;
 });
 });
 
 
 $(document).on("click", "#trails", function() {
- userLocation("trails", "yosemite", function(result) {
-    event.preventDefault();
+    var target2 = $("#trailSearch");
+ userLocation("trails", target2[0].attributes[0].ownerElement.value, function(result) {
   return result;
 });
 });

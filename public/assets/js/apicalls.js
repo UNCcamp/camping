@@ -4,6 +4,17 @@ var mapboxKey = 'pk.eyJ1Ijoia3Jpa2FyciIsImEiOiJjajEwcmxpdmEwM2ZoMzJwZWNrc3hnYm13
 
 var lat = 0;
 var lng = 0;
+var target1 = $("#campSearch");
+var target2 = $("#trailSearch");
+
+$(document).on("click", "#campgrounds", userLocation("trails", "yosemite", function(result) {
+  return result;
+}));
+
+
+$(document).on("click", "#trails", userLocation("trails", "yosemite", function(result) {
+  return result;
+}));
 
 //define map
 mapboxgl.accessToken = mapboxKey;
@@ -75,18 +86,6 @@ function campgroundCall(lat, lng) {
                 longitude: campLng,
                 image: imageURL
             });
-
-            var imageURL = "https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B"
-                           + campLng + "%2C" + campLat + "%5D%7D)/" + campLng + "," + campLat + ",12/250x250?access_token=" + mapboxKey;
-
-            result.push({name: campName,
-                         description: campDesc,
-                         directions: campDir,
-                         ID: campID,
-                         latitude: campLat, 
-                         longitude: campLng,
-                         image: imageURL});
-
 
             // create the popup
             var popup = new mapboxgl.Popup({ offset: 25 })
@@ -201,7 +200,7 @@ function trailCall(lat, lng) {
                 .setPopup(popup) // sets a popup on this marker
                 .addTo(map);
         }
-        console.log(result);
+        return result;
     });
 } //end function trailCall
 

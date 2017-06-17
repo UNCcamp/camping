@@ -1,14 +1,15 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Activity = sequelize.define('Activity', {
-    activityID: DataTypes.INTEGER,
     activityName: DataTypes.STRING,
     activityDescription: DataTypes.TEXT
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
-        Activity.belongsTo(models.Profiles);
+          Activity.belongsTo(models.Profiles,{
+          foreignKey: 'a_profileId',
+          onDelete: 'CASCADE'
+        })
       }
     }
   });

@@ -144,6 +144,10 @@ nav.sidebar,
 
 /* .....NavBar: Fully showing nav bar..... */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> testingbranch
 nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover,
 nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus {
   color: red;

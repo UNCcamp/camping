@@ -13,9 +13,9 @@ nightmare
 // Visit login page
   .goto("https://unc-camp.herokuapp.com/")
   // Enter camp search.
-  .type(".form-control", "Yosemite")
+  .type("#campSearch", "Yosemite")
   // Enter trail search.
-  .type(".form-control", "Monument Valley")
+  .type("#trailSearch", "Monument Valley")
   // Click first aid link
   .click("a[href='/firstaid']")
   // Wait until the  link renders.
@@ -27,14 +27,14 @@ nightmare
   .scrollTo(500, 0)
   .back()
   .click(".dropdown")
-  .click("a[href='/backpack]")
-  .wait("a[href='/backpack]")
+  .click("a[href='/backpack']")
+  .wait("a[href='/backpack']")
   .click("#checkbox1")
   .click("#checkbox5")
   .click("#checkbox6")
   .click("#checkbox10")
   .click("#checkbox13")
-  .click(".btn-success")
+  .back()
   // End test
   .end()
   // Execute commands

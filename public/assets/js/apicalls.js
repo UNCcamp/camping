@@ -7,6 +7,7 @@ var lng = 0;
 $(document).on("click", "#campgrounds", function() {
     var target1 = $("#campSearch");
     userLocation("campgrounds", target1[0].attributes[0].ownerElement.value, function(result) {
+        console.log(result);
         return result;
     });
 });
@@ -15,6 +16,7 @@ $(document).on("click", "#campgrounds", function() {
 $(document).on("click", "#trails", function() {
     var target2 = $("#trailSearch");
     userLocation("trails", target2[0].attributes[0].ownerElement.value, function(result) {
+        console.log(result);
         return result;
     });
 });

@@ -1,6 +1,6 @@
 //declare key variables
-var RIDBKey = config.RIDBKey;
-var mapboxKey = config.mapboxKey;
+// var RIDBKey = config.RIDBKey;
+var mapboxKey = 'pk.eyJ1Ijoia3Jpa2FyciIsImEiOiJjajEwcmxpdmEwM2ZoMzJwZWNrc3hnYm13In0.8cXei-iPLO0qctadLZ9O9w';
 
 var lat = 0;
 var lng = 0;

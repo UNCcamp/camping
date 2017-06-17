@@ -9,16 +9,20 @@ console.log(target1);
 var target2 = $("#trailSearch");
 console.log(target2);
 
-$(document).on("click", "#campgrounds", userLocation("trails", "yosemite", function(result) {
+$(document).on("click", "#campgrounds", function() {
+    userLocation("trails", "yosemite", function(result) {
     event.preventDefault();
   return result;
-}));
+});
+});
 
 
-$(document).on("click", "#trails", userLocation("trails", "yosemite", function(result) {
+$(document).on("click", "#trails", function() {
+ userLocation("trails", "yosemite", function(result) {
     event.preventDefault();
   return result;
-}));
+});
+});
 
 //define map
 mapboxgl.accessToken = mapboxKey;
@@ -205,7 +209,7 @@ function trailCall(lat, lng) {
                 .setPopup(popup) // sets a popup on this marker
                 .addTo(map);
         }
-        console.log(result);
+        console.log("result");
         return result;
     });
 } //end function trailCall

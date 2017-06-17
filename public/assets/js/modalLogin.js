@@ -1,5 +1,5 @@
 $(function() {
-    
+
     var $formLogin = $('#login-form');
     var $formLost = $('#lost-form');
     var $formRegister = $('#register-form');
@@ -46,14 +46,14 @@ $(function() {
         }
         return false;
     });
-    
+
     $('#login_register_btn').click( function () { modalAnimate($formLogin, $formRegister) });
     $('#register_login_btn').click( function () { modalAnimate($formRegister, $formLogin); });
     $('#login_lost_btn').click( function () { modalAnimate($formLogin, $formLost); });
     $('#lost_login_btn').click( function () { modalAnimate($formLost, $formLogin); });
     $('#lost_register_btn').click( function () { modalAnimate($formLost, $formRegister); });
     $('#register_lost_btn').click( function () { modalAnimate($formRegister, $formLost); });
-    
+
     function modalAnimate ($oldForm, $newForm) {
         var $oldH = $oldForm.height();
         var $newH = $newForm.height();
@@ -64,13 +64,13 @@ $(function() {
             });
         });
     }
-    
+
     function msgFade ($msgId, $msgText) {
         $msgId.fadeOut($msgAnimateTime, function() {
             $(this).text($msgText).fadeIn($msgAnimateTime);
         });
     }
-    
+
     function msgChange($divTag, $iconTag, $textTag, $divClass, $iconClass, $msgText) {
         var $msgOld = $divTag.text();
         msgFade($textTag, $msgText);
@@ -84,4 +84,50 @@ $(function() {
             $iconTag.removeClass($iconClass + " " + $divClass);
       }, $msgShowTime);
     }
+
+  $("#login").click(function() {
+
+    var loginEmail = $("#login_email").val();
+    var loginPass = $("#login_password").val();
+    console.log(loginEmail);
+    console.log(loginPass);
+    $.ajax({
+      url: "/authenticate",
+      method:"POST",
+      data: {email: loginEmail, pass:loginPass}
+    })
+    .done(function(result){
+      console.log(result);
+      if(result === "OK") {
+        console.log("asdfja;skldjf;klasjdf whatattt");
+        window.location = "/profile";
+      }
+    })
+    .fail(function(e) {
+        console.log(e);
+      });
+  });
+
+    $("#register").click(function() {
+
+      var email  = $("#register_email").val();
+      var pass   = $("#register_password").val();
+      var fName  = $("#register_firstName").val();
+      var lName  = $("#register_lastName").val();
+      var img    = $("#ProfilePic").val();
+      if(img || pass || fName || lName || img) {
+        // append warning here
+        console.log("Need to fill all data in");
+      }
+      else {
+        $.ajax({
+          url: "/adduser",
+          method:"POST",
+          data: {username: email, pass:pass, firstName:fName, lastName:lname, img: img}
+        })
+        .fail(function(e) {
+          console.log(e);
+        });
+    }
+  });
 });

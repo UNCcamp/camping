@@ -27,8 +27,9 @@ router.get("/mealplan", function (req, res) {
     res.render("mealPlan");
 });
 
-router.get("/profile", function (req, res) {
-    if(req.headers.cookie.includes("user")) {
+router.get("/profile",function (req, res) {
+     var userid = cleanCookie(req)
+    if(userid !=="") {
       //this parses the cookie to get id from user
       var userid = req.headers.cookie.split(";")[1].split("=")[1];
       query.getUserProfileById(userid)
@@ -54,7 +55,6 @@ router.get("/profile", function (req, res) {
 });
 
 router.post("/authenticate",function(req,res) {
-  console.log(req.body);
   var email = req.body.email;
   var pass = req.body.pass;
   query.getUserProfileByName(email)
@@ -76,7 +76,7 @@ router.post("/authenticate",function(req,res) {
   });
 });
 
-router.post('/adduser', function (req, res) {
+router.post('/adduser', function(req, res) {
   var user = req.body;
   try {
     auth.hashPass(user.passWord,function(result) {
@@ -98,8 +98,25 @@ router.post('/adduser', function (req, res) {
   }
 });
 
-router.post('/updateuser', function (req, res) {
-  res.send('POST request to homepage');
+router.post("/addlocation",function(req,res) {
+  var userid = cleanCookie(req)
+  if(userid !== "") {
+    var locationData = {
+      name: req.body.name,
+      description: req.body.description,
+      latLocation: req.body.latLocation,
+      longLocation: req.body.longLocation
+    }
+    query.addLocation(locationData,userid)
+    .then(function(result){
+      res.status("201")
+      .send("Location added");
+    })
+    .catch(function(e){
+      res.status("500")
+      send("Error adding location");
+    });
+  }
 });
 
 
@@ -112,4 +129,11 @@ router.get("/trail", function (req, res) {
     res.render("TrailResult");
 });
 
+function cleanCookie(req) {
+  if(req.headers.cookie.includes("user")) {
+    var userid = req.headers.cookie.split(";")[1].split("=")[1];
+    return userid;
+  }
+  return "";
+}
 module.exports = router;

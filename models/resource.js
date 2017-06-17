@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         Resource.belongsTo(models.Location,{
-       foreignKey: 'a_locationId',
+       foreignKey: 'locationId',
        onDelete: 'CASCADE'
      })
     }

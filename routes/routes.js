@@ -119,6 +119,26 @@ router.post("/addlocation",function(req,res) {
   }
 });
 
+router.post("/getLocation",function(req,res) {
+  var userid = cleanCookie(req)
+  if(userid !== "") {
+    var locationData = {
+      name: req.body.name,
+      description: req.body.description,
+      latLocation: req.body.latLocation,
+      longLocation: req.body.longLocation
+    }
+    query.addLocation(locationData,userid)
+    .then(function(result){
+      res.status("201")
+      .send("Location added");
+    })
+    .catch(function(e){
+      res.status("500")
+      send("Error adding location");
+    });
+  }
+});
 
 router.get("/login", function (req, res) {
     res.render("modalLogin");

@@ -2,7 +2,7 @@ const express = require("express");
 var m = require("../models/index");
 
 var CampQueries = {
-  getUserProfile:function(userEmail) {
+  getUserProfileByName:function(userEmail) {
     return m.Profiles.findAll({
             where: {
               email: userEmail
@@ -18,19 +18,13 @@ var CampQueries = {
       passWord: passWord
     })
   },
+  getUserProfileById:function(userid) {
+    return m.Profiles.findAll({
+            where: {
+              id: userid
+            }
+          });
+  }
 }
-// function getUserLocations(userID) {
-//   return m.Profile.findAll({
-//           include:[{
-//             model: Location,
-//             where: {
-//               id: userID
-//             }
-//           }]
-//
-//         });
-//
-// }
-
 
 module.exports = CampQueries

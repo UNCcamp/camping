@@ -92,12 +92,40 @@ $(function() {
     console.log(loginEmail);
     console.log(loginPass);
     $.ajax({
-      url: "/auth/login",
+      url: "/authenticate",
       method:"POST",
-      data: {username: loginEmail, pass:loginPass}
-    }).fail(function(e) {
+      data: {email: loginEmail, pass:loginPass}
+    })
+    .done(function(result){
+      if(result === "OK") {
+        window.location = "/profile";
+      }
+    })
+    .fail(function(e) {
         console.log(e);
       });
   });
 
+    $("#register").click(function() {
+
+      var email  = $("#register_email").val();
+      var pass   = $("#register_password").val();
+      var fName  = $("#register_firstName").val();
+      var lName  = $("#register_lastName").val();
+      var img    = $("#ProfilePic").val();
+      if(img || pass || fName || lName || img) {
+        // append warning here
+        console.log("Need to fill all data in");
+      }
+      else {
+        $.ajax({
+          url: "/adduser",
+          method:"POST",
+          data: {username: email, pass:pass, firstName:fName, lastName:lname, img: img}
+        })
+        .fail(function(e) {
+          console.log(e);
+        });
+    }
+  });
 });

@@ -28,17 +28,31 @@ router.get("/mealplan", function (req, res) {
 });
 
 router.get("/profile", function (req, res) {
-  if(true) { // will have to store user session here
-    //query.getUserProfile(userID)
-     // .then(function(result){
-     res.render("ProfileMain", {
-          imageURL:"https://prods3.imgix.net/images/articles/2017_01/Facebook-Salt-Bae-Meme-Butcher.jpg",
-      //    result.campsites,
-      //    result.Trails
-      //
-      //
+    if(req.headers.cookie.includes("user")) {
+      //this parses the cookie to get id from user
+      var userid = req.headers.cookie.split(";")[1].split("=")[1];
+      query.getUserProfileById(userid)
+      .then(function(result){
+        if(result) {
+          res.render("ProfileMain", {
+            imageURL: result[0].imageURL
+           });
+        }
+        else {
+          res.status("500")
+          send("Not found");
+        }
+      })
+      .catch(function(){
+        res.status("500")
+        .send("sequelize error occured")
       });
-     // });
+    }
+    else {
+      res.render("/login");
+    }
+  if(true) {
+
    }
    else {
      res.status("401")
@@ -47,13 +61,16 @@ router.get("/profile", function (req, res) {
 });
 
 router.post("/authenticate",function(req,res) {
+  console.log(req.body);
   var email = req.body.email;
   var pass = req.body.pass;
-  query.getUserProfile(email)
+  query.getUserProfileByName(email)
   .then(function(result) {
     auth.authenticate(result[0].passWord,pass, function(isAuth){
       if(isAuth) {
-        res.redirect("/profile");
+        res.cookie('user', result[0].id, { expires: new Date(Date.now() + 36000000), httpOnly: true });
+        res.status("301")
+        .send("OK");
       }
       else {
         res.status("401")        // HTTP unauthorized

@@ -144,8 +144,6 @@ nav.sidebar,
 
 /* .....NavBar: Fully showing nav bar..... */
 
-
-
 nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover,
 nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus {
   color: red;

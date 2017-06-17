@@ -4,17 +4,19 @@ var mapboxKey = 'pk.eyJ1Ijoia3Jpa2FyciIsImEiOiJjajEwcmxpdmEwM2ZoMzJwZWNrc3hnYm13
 
 var lat = 0;
 var lng = 0;
-var target1 = $("#campSearch").val();
+var target1 = $("#campSearch");
 console.log(target1);
 var target2 = $("#trailSearch");
 console.log(target2);
 
 $(document).on("click", "#campgrounds", userLocation("trails", "yosemite", function(result) {
+    event.preventDefault();
   return result;
 }));
 
 
 $(document).on("click", "#trails", userLocation("trails", "yosemite", function(result) {
+    event.preventDefault();
   return result;
 }));
 
@@ -152,7 +154,7 @@ function trailCall(lat, lng) {
         url: queryURLtrails,
         method: 'GET'
     }).done(function(response) {
-        console.log(response);
+        // console.log(response);
         var result = [];
         for (var i = 0; i < 24; i++) {
             var trail = response.RECDATA[i];

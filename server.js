@@ -1,6 +1,5 @@
 const express = require("express"),
-cryptoRoutes = require("./controllers/auth/cryptoRoutes"),
-pageRoutes = require("./routes/htmlRoutes"),
+pageRoutes = require("./routes/routes"),
 exphbs  = require("express-handlebars"),
 bodyParser = require("body-parser");
 
@@ -27,8 +26,6 @@ app.use(express.static(path.join(__dirname, "node_modules")));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
-
-app.use("/auth", cryptoRoutes);
 app.use(pageRoutes);
 
 var db = require('./models');

@@ -3,14 +3,20 @@ var m = require("../models/index");
 
 var CampQueries = {
   getUserProfile:function(userEmail) {
-    return m.Profile.findAll({
+    return m.Profiles.findAll({
             where: {
-              userName: userEmail
+              email: userEmail
             }
           });
   },
-  getUserLocations:function(userID) {
-
+  addUser:function(user,passWord) {
+    return m.Profiles.create({
+      userName: user.username,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      passWord: passWord
+    })
   },
 }
 // function getUserLocations(userID) {

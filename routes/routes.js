@@ -1,5 +1,6 @@
 const express = require("express");
 var query = require("../controllers/controller")
+var auth = require("../controllers/auth/cryptoRoutes");
 var router = express.Router();
 
 router.get("/", function (req, res) {
@@ -45,10 +46,51 @@ router.get("/profile", function (req, res) {
    }
 });
 
-router.post("/authenticate", function(req,res) {
-  
+router.post("/authenticate",function(req,res) {
+  var email = req.body.email;
+  var pass = req.body.pass;
+  query.getUserProfile(email)
+  .then(function(result) {
+    auth.authenticate(result[0].passWord,pass, function(isAuth){
+      if(isAuth) {
+        res.redirect("/profile");
+      }
+      else {
+        res.status("401")        // HTTP unauthorized
+        .send("Not authorized");
+      }
+    });
+  })
+  .catch(function(e){
+    console.log(e);
+  });
 });
 
+router.post('/adduser', function (req, res) {
+  var user = req.body;
+  try {
+    auth.hashPass(user.passWord,function(result) {
+      query.addUser(user,result)
+      .then(function() {
+        res.status("201")
+        .send("User added");
+      })
+      .catch(function() {
+        res.status("500")
+        .send("Error adding user");
+      });
+    });
+  }
+  catch(e) {
+    console.log(e);
+    res.status("500")
+    .send("Error occured");
+  }
+});
+
+router.post('/updateuser', function (req, res) {
+  res.send('POST request to homepage');
+});
 
 
 router.get("/login", function (req, res) {

@@ -1,9 +1,23 @@
-//declare key variables
-var RIDBKey = config.RIDBKey;
-var mapboxKey = config.mapboxKey;
+//keys
+var mapboxKey = 'pk.eyJ1Ijoia3Jpa2FyciIsImEiOiJjajEwcmxpdmEwM2ZoMzJwZWNrc3hnYm13In0.8cXei-iPLO0qctadLZ9O9w';
 
 var lat = 0;
 var lng = 0;
+
+$(document).on("click", "#campgrounds", function() {
+    var target1 = $("#campSearch");
+    userLocation("campgrounds", target1[0].attributes[0].ownerElement.value, function(result) {
+  return result;
+});
+});
+
+
+$(document).on("click", "#trails", function() {
+    var target2 = $("#trailSearch");
+ userLocation("trails", target2[0].attributes[0].ownerElement.value, function(result) {
+  return result;
+});
+});
 
 //define map
 mapboxgl.accessToken = mapboxKey;
@@ -76,18 +90,6 @@ function campgroundCall(lat, lng) {
                 image: imageURL
             });
 
-            var imageURL = "https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B"
-                           + campLng + "%2C" + campLat + "%5D%7D)/" + campLng + "," + campLat + ",12/250x250?access_token=" + mapboxKey;
-
-            result.push({name: campName,
-                         description: campDesc,
-                         directions: campDir,
-                         ID: campID,
-                         latitude: campLat, 
-                         longitude: campLng,
-                         image: imageURL});
-
-
             // create the popup
             var popup = new mapboxgl.Popup({ offset: 25 })
                 .setText('Campground Name: ' + campName);
@@ -100,6 +102,7 @@ function campgroundCall(lat, lng) {
                 .setPopup(popup) // sets a popup on this marker
                 .addTo(map);
         }
+        console.log("result");
         return result;
     });
 }
@@ -144,16 +147,17 @@ function trailCall(lat, lng) {
     });
     //ajax call to RIDB for USFS trails
     var queryURLtrails = "https://ridb.recreation.gov/api/v1/trails/USFS/?latitude=" 
-                         + lat + "&longitude=" + lng + "&radius=50&apikey=1F46A83E349C407E8538DFA18D9C049A";
+                         + lat + "&longitude=" + lng + "&radius=50&limit=12&apikey=1F46A83E349C407E8538DFA18D9C049A";
     console.log(queryURLtrails);
     $.ajax({
         url: queryURLtrails,
         method: 'GET'
     }).done(function(response) {
-        console.log(response);
+        console.log(response.RECDATA.length);
         var result = [];
-        for (var i = 0; i < 24; i++) {
+        for (var i = 0; i < response.RECDATA.length; i++) {
             var trail = response.RECDATA[i];
+            console.log(trail);
             var trailName = trail.TrailName;
             var trailLength = trail.SegmentLength;
             var trailNo = trail.TrailNo;
@@ -171,15 +175,15 @@ function trailCall(lat, lng) {
             }
             // get latitude and longitude for trail
             var latlng = geoLine[0];
-            console.log(latlng);
+            // console.log(latlng);
             var trailLng = geoLine[0][0];
             var trailLat = geoLine[0][1];
-            console.log(trailLat + ", " + trailLng);
-            console.log(latlng);
+            // console.log(trailLat + ", " + trailLng);
+            // console.log(latlng);
 
             var imageURL = "https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B" 
                            + trailLng + "%2C" + trailLat + "%5D%7D)/" + trailLng + "," + trailLat + ",12/250x250?access_token=" + mapboxKey;
-            console.log(imageURL);
+            // console.log(imageURL);
             result.push({
                 name: trailName,
                 length: trailLength,
@@ -202,6 +206,7 @@ function trailCall(lat, lng) {
                 .addTo(map);
         }
         console.log(result);
+        return result;
     });
 } //end function trailCall
 

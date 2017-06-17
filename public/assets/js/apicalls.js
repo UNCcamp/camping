@@ -1,13 +1,8 @@
-//declare key variables
-// var RIDBKey = config.RIDBKey;
+//keys
 var mapboxKey = 'pk.eyJ1Ijoia3Jpa2FyciIsImEiOiJjajEwcmxpdmEwM2ZoMzJwZWNrc3hnYm13In0.8cXei-iPLO0qctadLZ9O9w';
 
 var lat = 0;
 var lng = 0;
-// var target1 = $("#campSearch");
-// console.log(target1);
-// var target2 = $("#trailSearch");
-// console.log(target2);
 
 $(document).on("click", "#campgrounds", function() {
     var target1 = $("#campSearch");
@@ -209,7 +204,6 @@ function trailCall(lat, lng) {
                 .setPopup(popup) // sets a popup on this marker
                 .addTo(map);
         }
-        console.log("result");
         return result;
     });
 } //end function trailCall

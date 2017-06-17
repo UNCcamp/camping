@@ -147,16 +147,17 @@ function trailCall(lat, lng) {
     });
     //ajax call to RIDB for USFS trails
     var queryURLtrails = "https://ridb.recreation.gov/api/v1/trails/USFS/?latitude=" 
-                         + lat + "&longitude=" + lng + "&radius=50&apikey=1F46A83E349C407E8538DFA18D9C049A";
+                         + lat + "&longitude=" + lng + "&radius=50&limit=12&apikey=1F46A83E349C407E8538DFA18D9C049A";
     console.log(queryURLtrails);
     $.ajax({
         url: queryURLtrails,
         method: 'GET'
     }).done(function(response) {
-        // console.log(response);
+        console.log(response.RECDATA.length);
         var result = [];
-        for (var i = 0; i < 24; i++) {
+        for (var i = 0; i < response.RECDATA.length; i++) {
             var trail = response.RECDATA[i];
+            console.log(trail);
             var trailName = trail.TrailName;
             var trailLength = trail.SegmentLength;
             var trailNo = trail.TrailNo;
@@ -204,6 +205,7 @@ function trailCall(lat, lng) {
                 .setPopup(popup) // sets a popup on this marker
                 .addTo(map);
         }
+        console.log(result);
         return result;
     });
 } //end function trailCall

@@ -33,28 +33,15 @@ $("#buildBackPack").on("click", function(event) {
 
 
 $("#addItem").on("click", function(event) {
-  event.preventDefault();
-  var newItem = {
-    item: $("#NewItem").val().trim()
+  var newItem = $("#newItem").val().trim()
+  $.ajax({
+      method: "POST",
+      url: "",
+      data: { addedItem: newItem }
+    }).done(function(msg) {
+      alert("Data saved:" + msg);
+    });
   }
-
-  console.log(newItem)
-  $.post("/", newItem)
-    .done(function() {
-      var d = $("<div>");
-      d.addClass("funkyradio-success");
-      var i = $("<input>");
-      i.attr("type", "checkbox");
-      i.attr("name", "checkbox");
-      i.attr("id", id);
-      var l = $("<label>");
-      l.attr("for", id);
-      l.val("hello");
-      i.prepend(l);
-      d.prepend(i);
-      $("#item-area").prepend(d);
-    })
-
 });
 
 $.get("/", function(data) {

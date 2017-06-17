@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
           onDelete: 'CASCADE'
         }),
         Loadouts.hasMany(models.Resource,{
-        foreignKey: 'resourceId',
+        foreignKey: 'locationId',
         as: 'resourceImage'
       }) //
       }

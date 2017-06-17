@@ -31,7 +31,7 @@ html {
 nav.sidebar.navbar {
   background-color: #267424;
   border-radius: 0px;
-  height: 700px;
+  height: 100%;
   position: fixed;
 }
 

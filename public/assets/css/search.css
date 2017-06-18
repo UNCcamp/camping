@@ -16,3 +16,11 @@ body {
 background-color: transparent;
 color:#def0ac;
 }
+
+#saveTrail {
+	margin-top: 20px;
+}
+
+#saveCampground {
+	margin-top: 20px;
+}

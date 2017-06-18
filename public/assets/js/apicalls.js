@@ -3,13 +3,12 @@ var mapboxKey = 'pk.eyJ1Ijoia3Jpa2FyciIsImEiOiJjajEwcmxpdmEwM2ZoMzJwZWNrc3hnYm13
 //handlebars reference
 var result;
 
-$(document).ready(function() {
-    // window.location = "/trail";
-    var source = $("#trails-template").html();
-    console.log(source);
-    var template = Handlebars.compile(source);
-    $('body').append(template(result));
-});
+// $(document).ready(function() {
+//     var source = $("#trails-template").html();
+//     console.log(source);
+//     var template = Handlebars.compile(source);
+//     $('body').append(template(result));
+// });
 
 
 var lat = 0;
@@ -18,12 +17,14 @@ var lng = 0;
 $(document).on("click", "#campgrounds", function() {
     var target1 = $("#campSearch");
     userLocation("campgrounds", target1[0].attributes[0].ownerElement.value, function(result) {
-        console.log(result);
-
         if (result.length > 0) {
             console.log("asdfja;skldjf;klasjdf whatattt");
             window.location = "/campground";
-            return result;
+            var source = $("#trails-template").html();
+            console.log(source);
+            var template = Handlebars.compile(source);
+            $('body').append(template(result));
+            // return result;
         } else {
             console.log("sorry, try again");
         }
@@ -38,7 +39,11 @@ $(document).on("click", "#trails", function() {
         if (result.length > 0) {
             console.log("asdfja;skldjf;klasjdf whatattt");
             window.location = "/trail";
-            return result;
+            var source = $("#trails-template").html();
+            console.log(source);
+            var template = Handlebars.compile(source);
+            $('body').append(template(result));
+            // return result;
         } else {
             console.log("sorry, try again");
         }

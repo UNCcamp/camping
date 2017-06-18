@@ -17,6 +17,9 @@ module.exports = {
       lastName: {
         type: Sequelize.STRING
       },
+      gender: {
+        type: Sequelize.STRING
+      },
       passWord: {
         type: Sequelize.STRING
       },

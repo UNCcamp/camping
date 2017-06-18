@@ -40,10 +40,3 @@ Thumbs.db
 ###############
 node_modules/*
 
-# Config #
-#########
-connnection.js
-
-#Ignore Migration #
-migrations/*
-

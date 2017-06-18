@@ -10,11 +10,13 @@ module.exports = function(sequelize, DataTypes) {
           Inventory.belongsTo(models.Profiles,{
           foreignKey: 'v_profileId',
           onDelete: 'CASCADE'
-        }), // associations can be defined here
-          Inventory.hasMany(models.Loadoutitems,{
-          foreignKey: 'inventoryId',
-          as: 'loadoutitems'
         })
+        //   , 
+        // // associations can be defined here
+        //   Inventory.hasMany(models.Loadoutitems,{
+        //   foreignKey: 'inventoryId',
+        //   as: 'loadoutitems'
+        // })
       }
     }
   });

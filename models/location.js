@@ -11,7 +11,11 @@ module.exports = function(sequelize, DataTypes) {
           Location.belongsTo(models.Profiles,{
           foreignKey: 'c_profileId',
           onDelete: 'CASCADE'
-        })
+        }),
+        Loadouts.hasMany(models.Resource,{
+        foreignKey: 'locationId',
+        as: 'resourceImage'
+      }) //
       }
     }
   });

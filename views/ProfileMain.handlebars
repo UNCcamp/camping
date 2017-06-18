@@ -39,8 +39,8 @@
                   <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand2" href="#"><img class="img-responsive" src="{{imageURL}}"></a>
-                <span class="site-name"><b>Jason</b> Voorhees</span>
-                <span class="site-description">worpress theme developer</span>
+                <span class="site-name"><b>{{firstName}}</b> {{lastName}}</span>
+                <span class="site-description">{{userCity}}</span>
               </div>
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="mainNav">
@@ -57,7 +57,10 @@
               </div>
               <!-- /.navbar-collapse -->
             </nav>
-            <div class="col-md-9"> HELLO WORLD THIS IS A PSEUDO BIO I'm Jason Voorhees. When I went to summer camp as a kid some bullies decided to ignore me as I drowned because they were to busy trying to get laid. So my mommy decided to take revenge my killing any campers who come to camp Crystal Lake. One day I found someone who pretended to by my mommy. So I killed her and all her friends. Then some pot smoking hippies lit me on fire and I found a hockey mask.</div>
+            <div class="col-md-9">
+              <h2>About Me</h2>
+              {{aboutMe}}
+            </div>
           </header>
           <!--/#HEADER-->
           <script type="text/javascript">

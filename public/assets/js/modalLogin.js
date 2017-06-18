@@ -110,12 +110,14 @@ $(function() {
 
     $("#register").click(function() {
 
-      var email  = $("#register_email").val();
-      var pass   = $("#register_password").val();
-      var fName  = $("#register_firstName").val();
-      var lName  = $("#register_lastName").val();
-      var img    = $("#ProfilePic").val();
-      if(img || pass || fName || lName || img) {
+      var email    = $("#register_email").val();
+      var pass     = $("#register_password").val();
+      var fName    = $("#register_firstName").val();
+      var lName    = $("#register_lastName").val();
+      var img      = $("#ProfilePic").val();
+      var city     = $("#city").val();
+      var username = $("#register_userName").val();
+      if(!img || !pass || !fName || !lName || !img || !city || !username) {
         // append warning here
         console.log("Need to fill all data in");
       }
@@ -123,7 +125,10 @@ $(function() {
         $.ajax({
           url: "/adduser",
           method:"POST",
-          data: {username: email, pass:pass, firstName:fName, lastName:lname, img: img}
+          data: {email: email, pass:pass, firstName:fName, lastName:lName, img: img, city:city, userName:username}
+        })
+        .done(function() {
+          modalAnimate($formRegister, $formLogin);
         })
         .fail(function(e) {
           console.log(e);

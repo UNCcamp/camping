@@ -5,12 +5,15 @@ var result;
 var lat = 0;
 var lng = 0;
 
+//store camping results and lat/lng results in localstorage and call next page
 $(document).on("click", "#campgrounds", function() {
     var target1 = $("#campSearch");
     userLocation("campgrounds", target1[0].attributes[0].ownerElement.value, function(result) {
         if (result.length > 0) {
             localStorage.clear();
-            localStorage.setItem("campgrounds", JSON.stringify(result));            
+            localStorage.setItem("campgrounds", JSON.stringify(result)); 
+            localStorage.setItem("latitude", lat);
+            localStorage.setItem("longitude", lng);           
             window.location = "/campground";
         } else {
             console.log("sorry, try again");
@@ -18,7 +21,7 @@ $(document).on("click", "#campgrounds", function() {
     });
 });
 
-
+//store trail results and lat/lng in local storage and call next page
 $(document).on("click", "#trails", function() {
     var target2 = $("#trailSearch");
     userLocation("trails", target2[0].attributes[0].ownerElement.value, function(result) {
@@ -26,6 +29,8 @@ $(document).on("click", "#trails", function() {
         if (result.length > 0) {
             localStorage.clear();
             localStorage.setItem("trails", JSON.stringify(result));
+            localStorage.setItem("latitude", lat);
+            localStorage.setItem("longitude", lng); 
             window.location = "/trail";
         } else {
             console.log("sorry, try again");
@@ -71,13 +76,12 @@ function userLocation(typeOfCall, location, cb) {
 
 //API call to get campgrounds in a 50 mile radius
 function campgroundCall(lat, lng, callback) {
-    map.flyTo({
-        center: [lng, lat],
-        zoom: 9
-    });
+    // map.flyTo({
+    //     center: [lng, lat],
+    //     zoom: 9
+    // });
     var queryURLfacility = "https://ridb.recreation.gov/api/v1/facilities/?activity=9&latitude=" + lat +
         "&longitude=" + lng + "&radius=50&apikey=1F46A83E349C407E8538DFA18D9C049A";
-    // console.log(queryURLfacility);
     $.ajax({
         url: queryURLfacility,
         method: 'GET'
@@ -103,16 +107,16 @@ function campgroundCall(lat, lng, callback) {
                 image: imageURL
             });
             // create the popup
-            var popup = new mapboxgl.Popup({ offset: 25 })
-                .setText('Campground Name: ' + campName);
-            // create DOM element for the marker
-            var el = document.createElement('div');
-            el.id = 'marker';
-            // create the marker
-            new mapboxgl.Marker(el, { offset: [-25, -25] })
-                .setLngLat([campLng, campLat])
-                .setPopup(popup) // sets a popup on this marker
-                .addTo(map);
+            // var popup = new mapboxgl.Popup({ offset: 25 })
+            //     .setText('Campground Name: ' + campName);
+            // // create DOM element for the marker
+            // var el = document.createElement('div');
+            // el.id = 'marker';
+            // // create the marker
+            // new mapboxgl.Marker(el, { offset: [-25, -25] })
+            //     .setLngLat([campLng, campLat])
+            //     .setPopup(popup) // sets a popup on this marker
+            //     .addTo(map);
         }
         callback(result);
     });

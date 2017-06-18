@@ -40,8 +40,7 @@ var CampQueries = {
       id: userid,
     },
     include: [{
-        model: m.Location,
-        where: {
+Hey         where: {
           c_profileId: userid,
         }
       }]
@@ -57,7 +56,7 @@ var CampQueries = {
     })
   },
   getUserLocations:function(userid) {
-    m.Location.findAll({
+    return m.Location.findAll({
       attributes: ["id"],
       where: {
         profileId: userid
@@ -67,7 +66,7 @@ var CampQueries = {
       console.log(result);
       return m.Resource.findAll({
         where:{
-          locationId:result
+          locationid:1
         }
       })
     })

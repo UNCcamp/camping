@@ -33,8 +33,17 @@ router.get("/profile",function (req, res) {
       //this parses the cookie to get id from user
       var userid = req.headers.cookie.split(";")[1].split("=")[1];
       query.getUserProfileById(userid)
-      .then(function(result){
+      .then(function(result) {
         if(result) {
+          query.getUserLocations(userid)
+          .then(function(result){
+            console.log(result);
+            handleBarsDataReady(result)
+          })
+          .catch(function(e){
+            res.status("500")
+            send("Error adding location");
+          });
           res.render("ProfileMain", {
             imageURL: result[0].imageURL,
             firstName: result[0].firstName,
@@ -123,7 +132,7 @@ router.post("/addlocation",function(req,res) {
   }
 });
 
-router.post("/getLocation",function(req,res) {
+router.get("/getLocations",function(req,res) {
   var userid = cleanCookie(req)
   if(userid !== "") {
     var locationData = {
@@ -132,9 +141,10 @@ router.post("/getLocation",function(req,res) {
       latLocation: req.body.latLocation,
       longLocation: req.body.longLocation
     }
-    query.addLocation(locationData,userid)
+    query.getUserLocations(userid)
     .then(function(result){
-      res.status("201")
+      console.log(result);
+       res.status("201")
       .send("Location added");
     })
     .catch(function(e){
@@ -160,4 +170,38 @@ function cleanCookie(req) {
   }
   return "";
 }
+
+function handleBarsDataReady(result) {
+  var totalImages = 12;
+  imageResult = []
+  var imagesPerCarousel = 4;
+  var splitCounter = 0;
+  if(result.length <=12){
+    imagesPerCarousel = splitCarousel(result.length,imagesPerCarousel)
+  }
+  var temp = {"carousel":[]}
+  for(var item = 0; item < totalImages; item++) {
+    var item = result[iter];
+    if(splitResult === item ){
+      imageResult.push(temp.carousel);
+      temp.carousel = [];
+      splitCounter+=imagesPerCarousel;
+    }
+    else {
+      temp.carousel.push(item);
+    }
+  }
+  return imageResult
+}
+
+function splitCarousel(numImages,imagesPerCarousel) {
+  value = numImages % imagesPerCarousel;
+  console.log("value "+value+" numImages "+numImages+" imagesPerCarousel "+imagesPerCarousel);
+  if(value === 0 || imagesPerCarousel === 2) {
+    return imagesPerCarousel;
+  }
+  return splitCarousel(numImages,imagesPerCarousel -1);
+}
+
+
 module.exports = router;

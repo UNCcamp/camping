@@ -1,5 +1,6 @@
 {{#section 'head'}}
   <link rel="stylesheet" type="text/css" href="/assets/css/search.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
 {{/section}}
 <div class="main">
 <style>
@@ -8,11 +9,17 @@
     height: 500px;
 }
 </style>
+<div class="row">
 <div class="col-md-offset-2 col-md-12"><h1>TRAILS SEARCH RESULTS:</h1></div>
+</div>
 <div class="row">
    <div class="col-md-offset-3 col-md-3"><div id='map'></div></div>
-   <div class="col-md-offset-2 col-md-12">
-   <script id="trails-template" type="text/x-handlebars-template">
+</div>
+<div class="row">
+   <div class="col-md-12">
+      <div id="trails"></div>
+
+   {{!-- <script id="trails-template" type="text/x-handlebars-template">
      {{#each result}}   
      <div class="col-md-12">
      <!-- CampGround Name -->
@@ -20,7 +27,7 @@
         <button type="button" class="col-md-2 btn btn-success">SAVE TRAIL</button>
      </div>
      <!-- CampGround Image -->
-     <div class="col-md-4"><img class="TrailMap" src=src={{this.result.image}} alt="CampImage"></div>
+     <div class="col-md-4"><img class="TrailMap" src={{this.result.image}} alt="CampImage"></div>
      <!-- Camp Ground Info -->
      <div class="col-md-6">
        <div class="col-md-12">
@@ -33,7 +40,7 @@
        </div>
      </div>
      {{/each}}
-     </script>
+     </script> --}}
     </div>
 </div>  {{!-- closes "row" --}}
   <!-- Content Here -->
@@ -42,7 +49,6 @@
 
 </div>
 {{#section 'footer'}}
-{{!-- <script type="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.amd.js"></script> --}}
 <script type="text/javascript" src="/assets/js/apicalls.js"></script>
 <script type="text/javascript" src="/assets/js/trailsData.js"></script>
 {{/section}}

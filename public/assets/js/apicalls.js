@@ -2,15 +2,6 @@
 var mapboxKey = 'pk.eyJ1Ijoia3Jpa2FyciIsImEiOiJjajEwcmxpdmEwM2ZoMzJwZWNrc3hnYm13In0.8cXei-iPLO0qctadLZ9O9w';
 //handlebars reference
 var result;
-
-// $(document).ready(function() {
-//     var source = $("#trails-template").html();
-//     console.log(source);
-//     var template = Handlebars.compile(source);
-//     $('body').append(template(result));
-// });
-
-
 var lat = 0;
 var lng = 0;
 
@@ -18,13 +9,9 @@ $(document).on("click", "#campgrounds", function() {
     var target1 = $("#campSearch");
     userLocation("campgrounds", target1[0].attributes[0].ownerElement.value, function(result) {
         if (result.length > 0) {
-            console.log("asdfja;skldjf;klasjdf whatattt");
+            localStorage.clear();
+            localStorage.setItem("campgrounds", JSON.stringify(result));            
             window.location = "/campground";
-            var source = $("#trails-template").html();
-            console.log(source);
-            var template = Handlebars.compile(source);
-            $('body').append(template(result));
-            // return result;
         } else {
             console.log("sorry, try again");
         }
@@ -37,15 +24,9 @@ $(document).on("click", "#trails", function() {
     userLocation("trails", target2[0].attributes[0].ownerElement.value, function(result) {
         console.log(result);
         if (result.length > 0) {
-            console.log("asdfja;skldjf;klasjdf whatattt");
             localStorage.clear();
             localStorage.setItem("trails", JSON.stringify(result));
             window.location = "/trail";
-            // var source = $("#trails-template").html();
-            // console.log(source);
-            // var template = Handlebars.compile(source);
-            // $('body').append(template(result));
-            // // return result;
         } else {
             console.log("sorry, try again");
         }
@@ -235,11 +216,8 @@ function trailCall(lat, lng, callback) {
             }
             // get latitude and longitude for trail
             var latlng = geoLine[0];
-            // console.log(latlng);
             var trailLng = geoLine[0][0];
             var trailLat = geoLine[0][1];
-            // console.log(trailLat + ", " + trailLng);
-            // console.log(latlng);
             var imageURL = "https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B" + trailLng + "%2C" + trailLat + "%5D%7D)/" + trailLng + "," + trailLat + ",12/250x250?access_token=" + mapboxKey;
             result.push({
                 name: trailName,

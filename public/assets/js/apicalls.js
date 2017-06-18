@@ -1,5 +1,15 @@
 //keys
 var mapboxKey = 'pk.eyJ1Ijoia3Jpa2FyciIsImEiOiJjajEwcmxpdmEwM2ZoMzJwZWNrc3hnYm13In0.8cXei-iPLO0qctadLZ9O9w';
+//handlebars reference
+var result;
+
+$(document).ready(function() {
+    var source = $("#trails-template").html();
+    console.log(source);
+    var template = Handlebars.compile(source);
+    $('body').append(template(result));
+});
+
 
 var lat = 0;
 var lng = 0;
@@ -7,17 +17,32 @@ var lng = 0;
 $(document).on("click", "#campgrounds", function() {
     var target1 = $("#campSearch");
     userLocation("campgrounds", target1[0].attributes[0].ownerElement.value, function(result) {
-  return result;
-});
+        console.log(result);
 
+        if (result.length > 0) {
+            console.log("asdfja;skldjf;klasjdf whatattt");
+            window.location = "/campground";
+            return result;
+        } else {
+            console.log("sorry, try again");
+        }
+    });
+});
 
 
 $(document).on("click", "#trails", function() {
     var target2 = $("#trailSearch");
- userLocation("trails", target2[0].attributes[0].ownerElement.value, function(result) {
-  return result;
+    userLocation("trails", target2[0].attributes[0].ownerElement.value, function(result) {
+        console.log(result);
+        if (result.length > 0) {
+            console.log("asdfja;skldjf;klasjdf whatattt");
+            window.location = "/trail";
+            return result;
+        } else {
+            console.log("sorry, try again");
+        }
+    });
 });
-
 
 //define map
 mapboxgl.accessToken = mapboxKey;
@@ -175,8 +200,7 @@ function trailCall(lat, lng, callback) {
         zoom: 9
     });
     //ajax call to RIDB for USFS trails
-    var queryURLtrails = "https://ridb.recreation.gov/api/v1/trails/USFS/?latitude=" 
-                         + lat + "&longitude=" + lng + "&radius=50&limit=12&apikey=1F46A83E349C407E8538DFA18D9C049A";
+    var queryURLtrails = "https://ridb.recreation.gov/api/v1/trails/USFS/?latitude=" + lat + "&longitude=" + lng + "&radius=50&limit=12&apikey=1F46A83E349C407E8538DFA18D9C049A";
     console.log(queryURLtrails);
     $.ajax({
         url: queryURLtrails,
@@ -186,7 +210,6 @@ function trailCall(lat, lng, callback) {
         var result = [];
         for (var i = 0; i < response.RECDATA.length; i++) {
             var trail = response.RECDATA[i];
-            console.log(trail);
             var trailName = trail.TrailName;
             var trailLength = trail.SegmentLength;
             var trailNo = trail.TrailNo;
@@ -207,9 +230,9 @@ function trailCall(lat, lng, callback) {
             // console.log(latlng);
             var trailLng = geoLine[0][0];
             var trailLat = geoLine[0][1];
-
-            var imageURL = "https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B" 
-                           + trailLng + "%2C" + trailLat + "%5D%7D)/" + trailLng + "," + trailLat + ",12/250x250?access_token=" + mapboxKey;
+            // console.log(trailLat + ", " + trailLng);
+            // console.log(latlng);
+            var imageURL = "https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B" + trailLng + "%2C" + trailLat + "%5D%7D)/" + trailLng + "," + trailLat + ",12/250x250?access_token=" + mapboxKey;
             result.push({
                 name: trailName,
                 length: trailLength,

@@ -28,9 +28,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(pageRoutes);
 
-var db = require('./models');
-db.sequelize.sync().then(function() {
+// var db = require('./models');
+// db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
-});
+// });

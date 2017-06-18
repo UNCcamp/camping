@@ -6,7 +6,8 @@
     <div class="col-md-12"><img class="col-md-offset-4 col-md-3 Jason" src="/assets/icons/jason.svg"></div>
     <div class="col-md-offset-3 col-md-7 BootCampBlip"><h2>Welcome to BootCamping: Your homegrown guide for camping</h2></div>
     <div class="col-md-6 col-md-offset-3">
-
+    {{!-- add div for map so it works, but without styling so it doesn't show --}}
+    <div id="map"></div>
 
         <!-- Search Form -->
         <form role="form">
@@ -18,7 +19,7 @@
                     <div class="input-group">
                         <input class="form-control" type="text" id="campSearch" name="search" placeholder="Search Campgrounds" required/>
                         <span class="input-group-btn">
-                            <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"><span style="margin-left:10px;">Search</span></button>
+                            <button class="submit1 btn btn-success" id="campgrounds" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"><span style="margin-left:10px;">Search</span></button>
                         </span>
                         </span>
                     </div>
@@ -36,7 +37,7 @@
                     <div class="input-group">
                         <input class="form-control" type="text" id="trailSearch" name="search" placeholder="Search Trails" required/>
                         <span class="input-group-btn">
-                            <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"><span style="margin-left:10px;">Search</span></button>
+                            <button class="submit2 btn btn-success" id="trails" onclick="" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"><span style="margin-left:10px;">Search</span></button>
                         </span>
                         </span>
                     </div>
@@ -47,3 +48,7 @@
 
     </div>
 </div>
+
+{{#section 'footer'}}
+<script type="text/javascript" src="/assets/js/apicalls.js"></script>
+{{/section}} 

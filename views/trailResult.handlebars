@@ -10,44 +10,16 @@
 }
 </style>
 <div class="row">
-<div class="col-md-offset-2 col-md-12"><h1>TRAILS SEARCH RESULTS:</h1></div>
+  <div class="col-md-offset-2 col-md-12"><h1>TRAILS SEARCH RESULTS:</h1></div>
 </div>
 <div class="row">
-   <div class="col-md-offset-3 col-md-3"><div id='map'></div></div>
+  <div class="col-md-offset-3 col-md-3"><div id='map'></div></div>
 </div>
 <div class="row">
-   <div class="col-md-12">
-      <div id="trails"></div>
-
-   {{!-- <script id="trails-template" type="text/x-handlebars-template">
-     {{#each result}}   
-     <div class="col-md-12">
-     <!-- CampGround Name -->
-        <div class="col-md-4">{{this.result.name}}</div>
-        <button type="button" class="col-md-2 btn btn-success">SAVE TRAIL</button>
-     </div>
-     <!-- CampGround Image -->
-     <div class="col-md-4"><img class="TrailMap" src={{this.result.image}} alt="CampImage"></div>
-     <!-- Camp Ground Info -->
-     <div class="col-md-6">
-       <div class="col-md-12">
-         <!-- First Info like Description -->
-         <div class="col-md-12">Length: {{this.result.length}}</div>
-         <!-- Second Info like Description -->
-         <div class="col-md-12">Latitude: {{this.result.latitude}}</div>
-         <!-- Third Info like RV Friendly -->
-         <div class="col-md-12">Longitude: {{this.result.longitude}}</div>
-       </div>
-     </div>
-     {{/each}}
-     </script> --}}
-    </div>
-</div>  {{!-- closes "row" --}}
-  <!-- Content Here -->
-{{!-- </div> --}}
-<div class="row">
-
-</div>
+  <div class="col-md-12">
+    <div id="trails"></div>
+  </div>
+</div>  
 {{#section 'footer'}}
 <script type="text/javascript" src="/assets/js/apicalls.js"></script>
 <script type="text/javascript" src="/assets/js/trailsData.js"></script>

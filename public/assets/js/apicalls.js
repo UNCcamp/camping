@@ -38,12 +38,14 @@ $(document).on("click", "#trails", function() {
         console.log(result);
         if (result.length > 0) {
             console.log("asdfja;skldjf;klasjdf whatattt");
+            localStorage.clear();
+            localStorage.setItem("trails", JSON.stringify(result));
             window.location = "/trail";
-            var source = $("#trails-template").html();
-            console.log(source);
-            var template = Handlebars.compile(source);
-            $('body').append(template(result));
-            // return result;
+            // var source = $("#trails-template").html();
+            // console.log(source);
+            // var template = Handlebars.compile(source);
+            // $('body').append(template(result));
+            // // return result;
         } else {
             console.log("sorry, try again");
         }

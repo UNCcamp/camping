@@ -4,6 +4,7 @@ var mapboxKey = 'pk.eyJ1Ijoia3Jpa2FyciIsImEiOiJjajEwcmxpdmEwM2ZoMzJwZWNrc3hnYm13
 var result;
 
 $(document).ready(function() {
+    // window.location = "/trail";
     var source = $("#trails-template").html();
     console.log(source);
     var template = Handlebars.compile(source);

@@ -175,7 +175,7 @@ function cleanCookie(req) {
   console.log(req.headers);
   console.log(process.env.NODE_ENV === "production");
   if(req.headers.cookie.includes("user")) {
-    if((process.env.NODE_ENV === "production") {
+    if(process.env.NODE_ENV === "production") {
       var userid = req.headers.cookie.split("=")[1];
     }
     else {

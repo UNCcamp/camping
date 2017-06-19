@@ -36,7 +36,12 @@ router.get("/profile",function (req, res) {
       .then(function(result){
         if(result) {
           res.render("ProfileMain", {
-            imageURL: result[0].imageURL
+            imageURL: result[0].imageURL,
+            firstName: result[0].firstName,
+            lastName: result[0].lastName,
+            userCity: result[0].userCity,
+            aboutMe: result[0].aboutMe,
+
            });
         }
         else {
@@ -79,7 +84,7 @@ router.post("/authenticate",function(req,res) {
 router.post('/adduser', function(req, res) {
   var user = req.body;
   try {
-    auth.hashPass(user.passWord,function(result) {
+    auth.hashPass(user.pass,function(result) {
       query.addUser(user,result)
       .then(function() {
         res.status("201")

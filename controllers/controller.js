@@ -4,10 +4,12 @@ var m = require("../models/index");
 var CampQueries = {
   addUser:function(user,passWord) {
     return m.Profiles.create({
-      userName: user.username,
+      email: user.email,
+      userName: user.userName,
       firstName: user.firstName,
       lastName: user.lastName,
-      email: user.email,
+      imageURL: user.img,
+      userCity:user.city,
       passWord: passWord
     })
   },
@@ -54,6 +56,25 @@ var CampQueries = {
       profileId: userid
     })
   },
+  getUserLocations:function(userid) {
+    m.Location.findAll({
+      attributes: ["id"],
+      where: {
+        profileId: userid
+      }
+    })
+    .then(function(result) {
+      console.log(result);
+      return m.Resource.findAll({
+        where:{
+          locationId:result
+        }
+      })
+    })
+    .catch(function(e){
+      console.log(e);
+    });
+  }
 }
 
 module.exports = CampQueries

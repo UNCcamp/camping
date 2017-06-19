@@ -165,12 +165,12 @@ router.get("/trail", function (req, res) {
     res.render("TrailResult");
 });
 
-router.get("/mapkey",function(req, res)) {
+router.get("/mapkey",function(req, res) {
 
   res.status("200")
   .send(process.env.MAPBOXKEY);
 
-}
+});
 
 function cleanCookie(req) {
   if(req.headers.cookie.includes("user")) {

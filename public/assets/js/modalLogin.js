@@ -109,7 +109,6 @@ $(function() {
   });
 
     $("#register").click(function() {
-
       var email    = $("#register_email").val();
       var pass     = $("#register_password").val();
       var fName    = $("#register_firstName").val();

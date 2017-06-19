@@ -1,7 +1,8 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Loadouts = sequelize.define('Loadouts', {
-    loadoutDescription: DataTypes.TEXT
+    loadoutDescription: DataTypes.TEXT,
+    img:DataTypes.TEXT
   }, {
     classMethods: {
       associate: function(models) {

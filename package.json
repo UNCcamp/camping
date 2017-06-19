@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zachmilo/burger.git"
+    "url": "git+https://github.com/UNCcamp/camping"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/zachmilo/burger/issues"
+    "url": "https://github.com/UNCcamp/camping/issues"
   },
-  "homepage": "https://github.com/zachmilo/burger#readme",
+  "homepage": "https://github.com/UNCcamp/camping#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
     "chai": "^4.0.2",

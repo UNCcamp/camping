@@ -173,7 +173,9 @@ router.get("/mapkey",function(req, res) {
 
 function cleanCookie(req) {
   console.log(req.headers);
+  console.log(process.env);
   if(req.headers.cookie.includes("user")) {
+    if(process.env)
     var userid = req.headers.cookie.split(";")[1].split("=")[1];
     return userid;
   }

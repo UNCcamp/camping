@@ -25,6 +25,11 @@ color:#def0ac;
 	margin-top: 20px;
 }
 
+#map {
+	margin: 40px;
+
+}
+
 .row.display-flex {
   display: flex;
   flex-wrap: wrap;
@@ -32,6 +37,11 @@ color:#def0ac;
 .thumbnail {
   height: 100%;
 }
+
+h1 {
+	margin-bottom: 20px;
+}
+
 #marker {
     background-color: red;
     width: 20px;

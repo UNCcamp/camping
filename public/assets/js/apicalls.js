@@ -77,7 +77,7 @@ function userLocation(typeOfCall, location, cb) {
 //API call to get campgrounds in a 50 mile radius
 function campgroundCall(lat, lng, callback) {
     var queryURLfacility = "https://ridb.recreation.gov/api/v1/facilities/?activity=9&latitude=" + lat +
-        "&longitude=" + lng + "&radius=50&limit=21&apikey=1F46A83E349C407E8538DFA18D9C049A";
+        "&longitude=" + lng + "&radius=50&apikey=1F46A83E349C407E8538DFA18D9C049A";
     $.ajax({
         url: queryURLfacility,
         method: 'GET'

@@ -32,7 +32,40 @@ color:#def0ac;
 .thumbnail {
   height: 100%;
 }
-
+#marker {
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#marker-trail {
+    background-color: green;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;	
+}
+.mapboxgl-popup {
+    max-width: 200px;
+}
+#marker {
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#marker-trail {
+    background-color: green;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;	
+}
+.mapboxgl-popup {
+    max-width: 200px;
+}
 /* CSS used here will be applied after bootstrap.css */
 @media only screen and (min-width : 481px) {
     .row.equal-height {

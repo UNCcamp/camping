@@ -2,7 +2,7 @@
 
 const crypto = require("crypto");
 // const random = require("randomstring");
-const ENCRYPTION_KEY = "NtLlITlqPGPkMxTlSttFAfxsaDNbWqtd";
+const ENCRYPTION_KEY = process.env.AUTHKEY;
 // random.generate({
 //   length:32,
 //   charset: "alphabetic"

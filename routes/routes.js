@@ -173,10 +173,14 @@ router.get("/mapkey",function(req, res) {
 
 function cleanCookie(req) {
   console.log(req.headers);
-  console.log(process.env);
+  console.log(process.env.NODE_ENV === "production");
   if(req.headers.cookie.includes("user")) {
-    if(process.env)
-    var userid = req.headers.cookie.split(";")[1].split("=")[1];
+    if((process.env.NODE_ENV === "production") {
+      var userid = req.headers.cookie.split("=")[1];
+    }
+    else {
+      var userid = req.headers.cookie.split(";")[1].split("=")[1];
+    }
     return userid;
   }
   return "";

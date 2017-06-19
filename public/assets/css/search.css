@@ -24,13 +24,19 @@ color:#def0ac;
 #saveCampground {
 	margin-top: 20px;
 }
+#map {
+	margin: 40px;
 
+}
 .row.display-flex {
   display: flex;
   flex-wrap: wrap;
 }
 .thumbnail {
   height: 100%;
+}
+h1 {
+	margin-bottom: 20px;
 }
 #marker {
     background-color: red;

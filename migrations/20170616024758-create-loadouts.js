@@ -11,6 +11,9 @@ module.exports = {
       loadoutDescription: {
         type: Sequelize.TEXT
       },
+      img:{
+        Sequelize.TEXT
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -33,24 +33,26 @@ router.get("/profile",function (req, res) {
       //this parses the cookie to get id from user
       var userid = req.headers.cookie.split(";")[1].split("=")[1];
       query.getUserProfileById(userid)
-      .then(function(result) {
-        if(result) {
+      .then(function(userResult) {
+        if(userResult) {
           query.getUserLocations(userid)
-          .then(function(result){
-            console.log(result);
-            handleBarsDataReady(result)
+          .then(function(locResult){
+             var imagesResult = handleBarsDataReady(locResult);
+             res.render("ProfileMain", {
+               imageURL: userResult[0].imageURL,
+               firstName: userResult[0].firstName,
+               lastName: userResult[0].lastName,
+               userCity: userResult[0].userCity,
+               aboutMe: userResult[0].aboutMe,
+               campImages: imagesResult
+              });
+            // res.send(imagesResult);
           })
           .catch(function(e){
+            console.log(e);
             res.status("500")
-            send("Error adding location");
+            .send("Error adding location");
           });
-          res.render("ProfileMain", {
-            imageURL: result[0].imageURL,
-            firstName: result[0].firstName,
-            lastName: result[0].lastName,
-            userCity: result[0].userCity,
-            aboutMe: result[0].aboutMe,
-           });
         }
         else {
           res.status("500")
@@ -163,6 +165,13 @@ router.get("/trail", function (req, res) {
     res.render("TrailResult");
 });
 
+router.get("/mapkey",function(req, res)) {
+
+  res.status("200")
+  .send(process.env.MAPBOXKEY);
+
+}
+
 function cleanCookie(req) {
   if(req.headers.cookie.includes("user")) {
     var userid = req.headers.cookie.split(";")[1].split("=")[1];
@@ -172,36 +181,19 @@ function cleanCookie(req) {
 }
 
 function handleBarsDataReady(result) {
-  var totalImages = 12;
-  imageResult = []
-  var imagesPerCarousel = 4;
-  var splitCounter = 0;
-  if(result.length <=12){
-    imagesPerCarousel = splitCarousel(result.length,imagesPerCarousel)
-  }
-  var temp = {"carousel":[]}
-  for(var item = 0; item < totalImages; item++) {
-    var item = result[iter];
-    if(splitResult === item ){
-      imageResult.push(temp.carousel);
-      temp.carousel = [];
-      splitCounter+=imagesPerCarousel;
-    }
-    else {
-      temp.carousel.push(item);
+  var totalImages = result.length;
+  const NUMOFCARA = 3; // really 4 just b/c array is at zero
+  var countNextCar = 3;
+  imageResult = [];
+  var temp = [];
+  for(var iter = 0; iter < totalImages; iter++) {
+    var img = result[iter].url;
+    temp.push(img)
+      if((iter === countNextCar) || (iter === totalImages-1)) {
+        imageResult.push(temp);
+        temp = [];
     }
   }
   return imageResult
 }
-
-function splitCarousel(numImages,imagesPerCarousel) {
-  value = numImages % imagesPerCarousel;
-  console.log("value "+value+" numImages "+numImages+" imagesPerCarousel "+imagesPerCarousel);
-  if(value === 0 || imagesPerCarousel === 2) {
-    return imagesPerCarousel;
-  }
-  return splitCarousel(numImages,imagesPerCarousel -1);
-}
-
-
 module.exports = router;

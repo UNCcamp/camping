@@ -40,7 +40,7 @@ var CampQueries = {
       id: userid,
     },
     include: [{
-Hey         where: {
+          where: {
           c_profileId: userid,
         }
       }]
@@ -63,7 +63,6 @@ Hey         where: {
       }
     })
     .then(function(result) {
-      console.log(result);
       return m.Resource.findAll({
         where:{
           locationid:1

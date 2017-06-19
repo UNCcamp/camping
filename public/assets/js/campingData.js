@@ -1,4 +1,14 @@
 $(document).ready(function() {
+var mapboxKey = 'pk.eyJ1Ijoia3Jpa2FyciIsImEiOiJjajEwcmxpdmEwM2ZoMzJwZWNrc3hnYm13In0.8cXei-iPLO0qctadLZ9O9w';
+
+    //define map
+    mapboxgl.accessToken = mapboxKey;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/outdoors-v9', //stylesheet location
+        center: [-97.1191, 38.60313], //starting position
+        zoom: 2.9 //starting zoom
+    });
     //grab data from localstorage
     var campgrounds = JSON.parse(localStorage.getItem("campgrounds"));
     var lat = localStorage.getItem("latitude");

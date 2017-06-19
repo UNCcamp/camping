@@ -104,17 +104,6 @@ function campgroundCall(lat, lng, callback) {
                 longitude: campLng,
                 image: imageURL
             });
-            // create the popup
-            var popup = new mapboxgl.Popup({ offset: 25 })
-                .setText('Campground Name: ' + campName);
-            // create DOM element for the marker
-            var el = document.createElement('div');
-            el.id = 'marker';
-            // create the marker
-            new mapboxgl.Marker(el, { offset: [-25, -25] })
-                .setLngLat([campLng, campLat])
-                .setPopup(popup) // sets a popup on this marker
-                .addTo(map);
         }
         callback(result);
     });
@@ -230,17 +219,6 @@ function trailCall(lat, lng, callback) {
                 longitude: trailLng,
                 image: imageURL
             });
-            //add marker and popup for trail
-            var popup = new mapboxgl.Popup({ offset: 25 })
-                .setText('Trail Name: ' + trailName + '\nTrail Length: ' + trailLength + 'miles');
-            // create DOM element for the marker
-            var el = document.createElement('div');
-            el.id = 'marker-trail';
-            // create trail marker
-            new mapboxgl.Marker(el, { offset: [-25, -25] })
-                .setLngLat(latlng)
-                .setPopup(popup) // sets a popup on this marker
-                .addTo(map);
         }
         callback(result);
     });

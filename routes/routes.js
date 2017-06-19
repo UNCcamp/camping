@@ -8,7 +8,22 @@ router.get("/", function (req, res) {
 });
 
 router.get("/backpack", function (req, res) {
-    res.render("backpack");
+  if(req.headers.cookie) {
+    var userid = cleanCookie(req)
+    //this parses the cookie to get id from user
+    query.getUserProfileById(userid)
+    .then(function(userResult) {
+      res.render("backpack", {
+        imageURL: userResult[0].imageURL,
+        firstName: userResult[0].firstName,
+        lastName: userResult[0].lastName,
+        userCity: userResult[0].userCity,
+      });
+    });
+  }
+  else {
+    res.render("modalLogin");
+  }
 });
 
 router.get("/backpack/packer", function (req, res) {

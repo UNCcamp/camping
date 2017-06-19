@@ -173,6 +173,7 @@ router.get("/mapkey",function(req, res) {
 });
 
 function cleanCookie(req) {
+  console.log(req.headers.cookie);
   if(req.headers.cookie.includes("user")) {
     var userid = req.headers.cookie.split(";")[1].split("=")[1];
     return userid;

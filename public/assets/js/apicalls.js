@@ -1,5 +1,6 @@
 //keys
 var mapboxKey = 'pk.eyJ1Ijoia3Jpa2FyciIsImEiOiJjajEwcmxpdmEwM2ZoMzJwZWNrc3hnYm13In0.8cXei-iPLO0qctadLZ9O9w';
+var RIDBkey = '1F46A83E349C407E8538DFA18D9C049A ';
 //handlebars reference
 var result;
 var lat = 0;
@@ -77,7 +78,7 @@ function userLocation(typeOfCall, location, cb) {
 //API call to get campgrounds in a 50 mile radius
 function campgroundCall(lat, lng, callback) {
     var queryURLfacility = "https://ridb.recreation.gov/api/v1/facilities/?activity=9&latitude=" + lat +
-        "&longitude=" + lng + "&radius=50&apikey=1F46A83E349C407E8538DFA18D9C049A";
+        "&longitude=" + lng + "&radius=50&apikey=" + RIDBkey;
     $.ajax({
         url: queryURLfacility,
         method: 'GET'
@@ -190,7 +191,7 @@ function trailCall(lat, lng, callback) {
         zoom: 9
     });
     //ajax call to RIDB for USFS trails
-    var queryURLtrails = "https://ridb.recreation.gov/api/v1/trails/USFS/?latitude=" + lat + "&longitude=" + lng + "&radius=50&limit=12&apikey=1F46A83E349C407E8538DFA18D9C049A";
+    var queryURLtrails = "https://ridb.recreation.gov/api/v1/trails/USFS/?latitude=" + lat + "&longitude=" + lng + "&radius=50&limit=12&apikey=" + RIDBkey;
     console.log(queryURLtrails);
     $.ajax({
         url: queryURLtrails,

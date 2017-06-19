@@ -1,42 +1,25 @@
 {{#section 'head'}}
-  <link rel="stylesheet" type="text/css" href="/assets/css/backPackBuilder.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/search.css">
 {{/section}}
-<div>
+<div class="main">
 <style>
-
-
 #map {
     width: 600px;
     height: 500px;
 }
 </style>
-<div class="col-md-offset-2 col-md-12"><h1>CAMPGROUND SEARCH RESULTS:</h1></div>
- <div class="row">
-   <div class="col-md-offset-3 col-md-3"><div  id='map'></div></div>
-   <div class="col-md-offset-2 col-md-12">
-   <div class="col-md-12">
-    <!-- CampGround Name -->
-    {{#each campgrounds}}
-  <div class="col-md-4">{{this.campground.name}}</div>
-   <button type="button" class="col-md-2 btn btn-success">SAVE CAMPGROUND</button>
-   </div>
-  <!-- CampGround Image -->
-  <div class="col-md-4"><img class="TrailMap" src={{this.campground.image}} alt="CampImage"></div>
-  <!-- Camp Ground Info -->
-  <div class="col-md-6">
-    <div class="col-md-12">
-      <!-- First Info like Description -->
-      <div class="col-md-12">Description: {{this.campground.description}}</div>
-      <!-- Second Info like Description -->
-      <div class="col-md-12">Direction: {{this.campground.directions}}</div>
-      <!-- Third Info like RV Friendly -->
-      <div class="col-md-12">Latitude: {{this.campground.latitude}}</div>
-      <div class="col-md-12">Longitude: {{this.campground.longitude}}</div>
-    </div>
+<div class="col-md-12 text-center"><h1>CAMPGROUND SEARCH RESULTS:</h1></div>
+<div class="row">
+  <div class="col-md-offset-3"><div id='map'></div></div>
+</div>
+<div class="row equal-height">
+  <div class="col-md-12">
+    <div id="campgrounds"></div>
   </div>
-</div>
+</div> 
 
-</div>
 {{#section 'footer'}}
+{{!-- <script type="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.amd.js"></script> --}}
 <script type="text/javascript" src="/assets/js/apicalls.js"></script>
-{{/section}}    
+<script type="text/javascript" src="/assets/js/campingData.js"></script>
+{{/section}}

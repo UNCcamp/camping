@@ -1,23 +1,41 @@
 //keys
 var mapboxKey = 'pk.eyJ1Ijoia3Jpa2FyciIsImEiOiJjajEwcmxpdmEwM2ZoMzJwZWNrc3hnYm13In0.8cXei-iPLO0qctadLZ9O9w';
-
+var RIDBkey = '1F46A83E349C407E8538DFA18D9C049A ';
+//handlebars reference
+var result;
 var lat = 0;
 var lng = 0;
 
+//store camping results and lat/lng results in localstorage and call next page
 $(document).on("click", "#campgrounds", function() {
     var target1 = $("#campSearch");
     userLocation("campgrounds", target1[0].attributes[0].ownerElement.value, function(result) {
-        console.log(result);
-        return result;
+        if (result.length > 0) {
+            localStorage.clear();
+            localStorage.setItem("campgrounds", JSON.stringify(result)); 
+            localStorage.setItem("latitude", lat);
+            localStorage.setItem("longitude", lng);           
+            window.location = "/campground";
+        } else {
+            console.log("sorry, try again");
+        }
     });
 });
 
-
+//store trail results and lat/lng in local storage and call next page
 $(document).on("click", "#trails", function() {
     var target2 = $("#trailSearch");
     userLocation("trails", target2[0].attributes[0].ownerElement.value, function(result) {
         console.log(result);
-        return result;
+        if (result.length > 0) {
+            localStorage.clear();
+            localStorage.setItem("trails", JSON.stringify(result));
+            localStorage.setItem("latitude", lat);
+            localStorage.setItem("longitude", lng); 
+            window.location = "/trail";
+        } else {
+            console.log("sorry, try again");
+        }
     });
 });
 
@@ -59,13 +77,8 @@ function userLocation(typeOfCall, location, cb) {
 
 //API call to get campgrounds in a 50 mile radius
 function campgroundCall(lat, lng, callback) {
-    map.flyTo({
-        center: [lng, lat],
-        zoom: 9
-    });
     var queryURLfacility = "https://ridb.recreation.gov/api/v1/facilities/?activity=9&latitude=" + lat +
-        "&longitude=" + lng + "&radius=50&apikey=1F46A83E349C407E8538DFA18D9C049A";
-    // console.log(queryURLfacility);
+        "&longitude=" + lng + "&radius=50&apikey=" + RIDBkey;
     $.ajax({
         url: queryURLfacility,
         method: 'GET'
@@ -80,7 +93,8 @@ function campgroundCall(lat, lng, callback) {
             var campID = campground.FacilityID;
             var campLat = campground.FacilityLatitude;
             var campLng = campground.FacilityLongitude;
-            var imageURL = "https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B" + campLng + "%2C" + campLat + "%5D%7D)/" + campLng + "," + campLat + ",12/250x250?access_token=" + mapboxKey;
+            var imageURL = "https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B" + 
+                           campLng + "%2C" + campLat + "%5D%7D)/" + campLng + "," + campLat + ",15/250x250?access_token=" + mapboxKey;
             result.push({
                 name: campName,
                 description: campDesc,
@@ -177,7 +191,7 @@ function trailCall(lat, lng, callback) {
         zoom: 9
     });
     //ajax call to RIDB for USFS trails
-    var queryURLtrails = "https://ridb.recreation.gov/api/v1/trails/USFS/?latitude=" + lat + "&longitude=" + lng + "&radius=50&limit=12&apikey=1F46A83E349C407E8538DFA18D9C049A";
+    var queryURLtrails = "https://ridb.recreation.gov/api/v1/trails/USFS/?latitude=" + lat + "&longitude=" + lng + "&radius=50&limit=12&apikey=" + RIDBkey;
     console.log(queryURLtrails);
     $.ajax({
         url: queryURLtrails,
@@ -204,11 +218,8 @@ function trailCall(lat, lng, callback) {
             }
             // get latitude and longitude for trail
             var latlng = geoLine[0];
-            // console.log(latlng);
             var trailLng = geoLine[0][0];
             var trailLat = geoLine[0][1];
-            // console.log(trailLat + ", " + trailLng);
-            // console.log(latlng);
             var imageURL = "https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B" + trailLng + "%2C" + trailLat + "%5D%7D)/" + trailLng + "," + trailLat + ",12/250x250?access_token=" + mapboxKey;
             result.push({
                 name: trailName,

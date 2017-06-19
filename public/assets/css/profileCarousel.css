@@ -1,6 +1,6 @@
 .carousel2 {
   position: absolute;
-  top: 50px;
+  top: 400px;
   left: 50px;
   margin-bottom: 0;
   padding: 0 40px 30px 40px;
@@ -8,7 +8,7 @@
 
 .carousel3 {
   position: absolute;
-  top: 50px;
+  top: 700px;
   left: 50px;
   margin-bottom: 0;
   padding: 0 40px 30px 40px;
@@ -16,7 +16,7 @@
 
 .carousel4 {
   position: absolute;
-  top: 50px;
+  top: 1000px;
   left: 50px;
   margin-bottom: 0;
   padding: 0 40px 30px 40px;

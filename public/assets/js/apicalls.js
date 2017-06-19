@@ -76,12 +76,8 @@ function userLocation(typeOfCall, location, cb) {
 
 //API call to get campgrounds in a 50 mile radius
 function campgroundCall(lat, lng, callback) {
-    // map.flyTo({
-    //     center: [lng, lat],
-    //     zoom: 9
-    // });
     var queryURLfacility = "https://ridb.recreation.gov/api/v1/facilities/?activity=9&latitude=" + lat +
-        "&longitude=" + lng + "&radius=50&apikey=1F46A83E349C407E8538DFA18D9C049A";
+        "&longitude=" + lng + "&radius=50&limit=21&apikey=1F46A83E349C407E8538DFA18D9C049A";
     $.ajax({
         url: queryURLfacility,
         method: 'GET'
@@ -96,7 +92,8 @@ function campgroundCall(lat, lng, callback) {
             var campID = campground.FacilityID;
             var campLat = campground.FacilityLatitude;
             var campLng = campground.FacilityLongitude;
-            var imageURL = "https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B" + campLng + "%2C" + campLat + "%5D%7D)/" + campLng + "," + campLat + ",12/250x250?access_token=" + mapboxKey;
+            var imageURL = "https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B" + 
+                           campLng + "%2C" + campLat + "%5D%7D)/" + campLng + "," + campLat + ",15/250x250?access_token=" + mapboxKey;
             result.push({
                 name: campName,
                 description: campDesc,
@@ -107,16 +104,16 @@ function campgroundCall(lat, lng, callback) {
                 image: imageURL
             });
             // create the popup
-            // var popup = new mapboxgl.Popup({ offset: 25 })
-            //     .setText('Campground Name: ' + campName);
-            // // create DOM element for the marker
-            // var el = document.createElement('div');
-            // el.id = 'marker';
-            // // create the marker
-            // new mapboxgl.Marker(el, { offset: [-25, -25] })
-            //     .setLngLat([campLng, campLat])
-            //     .setPopup(popup) // sets a popup on this marker
-            //     .addTo(map);
+            var popup = new mapboxgl.Popup({ offset: 25 })
+                .setText('Campground Name: ' + campName);
+            // create DOM element for the marker
+            var el = document.createElement('div');
+            el.id = 'marker';
+            // create the marker
+            new mapboxgl.Marker(el, { offset: [-25, -25] })
+                .setLngLat([campLng, campLat])
+                .setPopup(popup) // sets a popup on this marker
+                .addTo(map);
         }
         callback(result);
     });

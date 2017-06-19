@@ -28,10 +28,9 @@ router.get("/mealplan", function (req, res) {
 });
 
 router.get("/profile",function (req, res) {
-     var userid = cleanCookie(req)
-    if(userid !=="") {
+    if(req.headers.cookie) {
+      var userid = cleanCookie(req)
       //this parses the cookie to get id from user
-      var userid = req.headers.cookie.split(";")[1].split("=")[1];
       query.getUserProfileById(userid)
       .then(function(userResult) {
         if(userResult) {

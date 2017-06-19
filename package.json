@@ -1,21 +1,21 @@
 {
-  "name": "burger",
+  "name": "camp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zachmilo/burger.git"
+    "url": "git+https://github.com/UNCcamp/camping"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/zachmilo/burger/issues"
+    "url": "https://github.com/UNCcamp/camping/issues"
   },
-  "homepage": "https://github.com/zachmilo/burger#readme",
+  "homepage": "https://github.com/UNCcamp/camping#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
     "chai": "^4.0.2",

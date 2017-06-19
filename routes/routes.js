@@ -28,21 +28,30 @@ router.get("/mealplan", function (req, res) {
 });
 
 router.get("/profile",function (req, res) {
-     var userid = cleanCookie(req)
-    if(userid !=="") {
+    if(req.headers.cookie) {
+      var userid = cleanCookie(req)
       //this parses the cookie to get id from user
-      var userid = req.headers.cookie.split(";")[1].split("=")[1];
       query.getUserProfileById(userid)
-      .then(function(result){
-        if(result) {
-          res.render("ProfileMain", {
-            imageURL: result[0].imageURL,
-            firstName: result[0].firstName,
-            lastName: result[0].lastName,
-            userCity: result[0].userCity,
-            aboutMe: result[0].aboutMe,
-
-           });
+      .then(function(userResult) {
+        if(userResult) {
+          query.getUserLocations(userid)
+          .then(function(locResult){
+             var imagesResult = handleBarsDataReady(locResult);
+             res.render("ProfileMain", {
+               imageURL: userResult[0].imageURL,
+               firstName: userResult[0].firstName,
+               lastName: userResult[0].lastName,
+               userCity: userResult[0].userCity,
+               aboutMe: userResult[0].aboutMe,
+               campImages: imagesResult
+              });
+            // res.send(imagesResult);
+          })
+          .catch(function(e){
+            console.log(e);
+            res.status("500")
+            .send("Error adding location");
+          });
         }
         else {
           res.status("500")
@@ -84,7 +93,7 @@ router.post("/authenticate",function(req,res) {
 router.post('/adduser', function(req, res) {
   var user = req.body;
   try {
-    auth.hashPass(user.pass,function(result) {
+      auth.hashPass(user.pass,function(result) {
       query.addUser(user,result)
       .then(function() {
         res.status("201")
@@ -124,7 +133,7 @@ router.post("/addlocation",function(req,res) {
   }
 });
 
-router.post("/getLocation",function(req,res) {
+router.get("/getLocations",function(req,res) {
   var userid = cleanCookie(req)
   if(userid !== "") {
     var locationData = {
@@ -133,9 +142,10 @@ router.post("/getLocation",function(req,res) {
       latLocation: req.body.latLocation,
       longLocation: req.body.longLocation
     }
-    query.addLocation(locationData,userid)
+    query.getUserLocations(userid)
     .then(function(result){
-      res.status("201")
+      console.log(result);
+       res.status("201")
       .send("Location added");
     })
     .catch(function(e){
@@ -154,11 +164,42 @@ router.get("/trail", function (req, res) {
     res.render("TrailResult");
 });
 
+router.get("/mapkey",function(req, res) {
+
+  res.status("200")
+  .send(process.env.MAPBOXKEY);
+
+});
+
 function cleanCookie(req) {
+  console.log(req.headers);
+  console.log(process.env.NODE_ENV === "production");
   if(req.headers.cookie.includes("user")) {
-    var userid = req.headers.cookie.split(";")[1].split("=")[1];
+    if(process.env.NODE_ENV === "production") {
+      var userid = req.headers.cookie.split("=")[1];
+    }
+    else {
+      var userid = req.headers.cookie.split(";")[1].split("=")[1];
+    }
     return userid;
   }
   return "";
+}
+
+function handleBarsDataReady(result) {
+  var totalImages = result.length;
+  const NUMOFCARA = 3; // really 4 just b/c array is at zero
+  var countNextCar = 3;
+  imageResult = [];
+  var temp = [];
+  for(var iter = 0; iter < totalImages; iter++) {
+    var img = result[iter].url;
+    temp.push(img)
+      if((iter === countNextCar) || (iter === totalImages-1)) {
+        imageResult.push(temp);
+        temp = [];
+    }
+  }
+  return imageResult
 }
 module.exports = router;

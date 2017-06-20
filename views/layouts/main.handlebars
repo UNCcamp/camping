@@ -76,6 +76,23 @@
     <div class="mdl-grid">
       {{{body}}}
     </div>
+<!-- Modal to alert that the search did not return any results-->
+    <div id="sorry" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title text-center"><strong>How did that happen?!?</strong></h2>
+                </div>
+                <div class="modal-body text-center"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
   </body>
 <script type="text/javascript" src="/assets/js/master.js"></script>
 <script src="/assets/js/modalLogin.js"></script>

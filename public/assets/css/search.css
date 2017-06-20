@@ -75,7 +75,11 @@ h1 {
 }
 
 .mapboxgl-popup {
-    max-width: 200px;
+    max-width: 250px;
+}
+
+.mapboxgl-popup-content {
+	color: black;
 }
 
 .glyphicon-refresh-animate {

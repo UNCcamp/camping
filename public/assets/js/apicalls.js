@@ -20,7 +20,8 @@ $(document).on("click", "#campgrounds", function() {
             localStorage.setItem("longitude", lng);           
             window.location = "/campground";
         } else {
-            console.log("sorry, try again");
+            $(".modal-body").append("<h2>We're sorry, we cannot find any campgrounds in that area. Please try a different location.</h2>");
+            $("#sorry").modal("toggle");
         }
     });
 });
@@ -39,7 +40,8 @@ $(document).on("click", "#trails", function() {
             localStorage.setItem("longitude", lng); 
             window.location = "/trail";
         } else {
-            console.log("sorry, try again");
+            $(".modal-body").append("<h2>We're sorry, we cannot find any trails in that area. Please try a different location.</h2>");
+            $("#sorry").modal("toggle");
         }
     });
 });
@@ -87,8 +89,11 @@ function campgroundCall(lat, lng, callback) {
     $.ajax({
         url: queryURLfacility,
         method: 'GET'
-    }).done(function(response) {
-        // console.log(response.RECDATA);
+    }).done(function(response, error) {
+        if (error) {
+            $(".modal-body").append("<h2>We're sorry, an error has occurred. Please try a different location.</h2>");
+            $("#sorry").modal("toggle");            
+        }
         var result = [];
         for (var i = 0; i < response.RECDATA.length; i++) {
             var campground = response.RECDATA[i];
@@ -126,7 +131,11 @@ function trailCall(lat, lng, callback) {
     $.ajax({
         url: queryURLtrails,
         method: 'GET'
-    }).done(function(response) {
+    }).done(function(response, error) {
+        if (error) {
+            $(".modal-body").append("<h2>We're sorry, an error has occurred. Please try a different location.</h2>");
+            $("#sorry").modal("toggle");            
+        }
         console.log(response.RECDATA.length);
         var result = [];
         for (var i = 0; i < response.RECDATA.length; i++) {

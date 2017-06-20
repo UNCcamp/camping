@@ -1,4 +1,14 @@
 $(document).ready(function() {
+var mapboxKey = 'pk.eyJ1Ijoia3Jpa2FyciIsImEiOiJjajEwcmxpdmEwM2ZoMzJwZWNrc3hnYm13In0.8cXei-iPLO0qctadLZ9O9w';
+
+    //define map
+    mapboxgl.accessToken = mapboxKey;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/outdoors-v9', //stylesheet location
+        center: [-97.1191, 38.60313], //starting position
+        zoom: 2.9 //starting zoom
+    });
     //grab data from localstorage
     var campgrounds = JSON.parse(localStorage.getItem("campgrounds"));
     var lat = localStorage.getItem("latitude");
@@ -27,12 +37,14 @@ $(document).ready(function() {
 
         $('#campgrounds').append("<div class='col-sm-6 col-md-4'><div class='thumbnail'><h3 class='text-center'><strong>" +
             campground.name + "</strong></h3><img src='" + campground.image + "' alt=" + campground + i +
-            "><div class='caption'></h3><h3>" + campground.description + "<h3>Directions: " +
+            "><div class='caption'><h3>" + campground.description + "</h3><h3>Directions: " +
             campground.directions + "</h3><h3>Campground Latitude: " + campground.latitude +
             "</h3><h3>Campground Longitude: " + campground.longitude +
             "<p><a href='#' class='btn btn-primary' id='saveCampground' role='button'>Save Campground</a></p></div></div></div>");
+
+        //adding clearfix to align thumbnails of different heights
         if (num % 3 === 0) {
-            $("#campgrounds").append("<div class='clearfix visible-lg-block'></div>")
+            $("#campgrounds").append("<div class='clearfix visible-lg-block'></div>");
         }
     }
 });

@@ -1,6 +1,7 @@
 //keys
 var mapboxKey ='pk.eyJ1Ijoia3Jpa2FyciIsImEiOiJjajEwcmxpdmEwM2ZoMzJwZWNrc3hnYm13In0.8cXei-iPLO0qctadLZ9O9w';
 var RIDBkey = '1F46A83E349C407E8538DFA18D9C049A';
+
 //handlebars reference
 var result;
 var lat = 0;
@@ -8,6 +9,8 @@ var lng = 0;
 
 //store camping results and lat/lng results in localstorage and call next page
 $(document).on("click", "#campgrounds", function() {
+    //add loading spinner
+    $("#campgrounds").html("<span class='glyphicon glyphicon-refresh glyphicon-refresh-animate'></span><span style='margin-left: 10px;'>Searching</span>");
     var target1 = $("#campSearch");
     userLocation("campgrounds", target1[0].attributes[0].ownerElement.value, function(result) {
         if (result.length > 0) {
@@ -24,6 +27,8 @@ $(document).on("click", "#campgrounds", function() {
 
 //store trail results and lat/lng in local storage and call next page
 $(document).on("click", "#trails", function() {
+    //add loading spinner
+    $("#trails").html("<span class='glyphicon glyphicon-refresh glyphicon-refresh-animate'></span><span style='margin-left: 10px;'>Searching</span>");
     var target2 = $("#trailSearch");
     userLocation("trails", target2[0].attributes[0].ownerElement.value, function(result) {
         console.log(result);
@@ -147,6 +152,7 @@ function trailCall(lat, lng, callback) {
             var trailLat = geoLine[0][1];
             var imageURL = "https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B" + 
                            trailLng + "%2C" + trailLat + "%5D%7D)/" + trailLng + "," + trailLat + ",12/250x250?access_token=" + mapboxKey;
+
             result.push({
                 name: trailName,
                 length: trailLength,

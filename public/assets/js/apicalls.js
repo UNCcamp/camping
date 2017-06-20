@@ -8,6 +8,8 @@ var lng = 0;
 
 //store camping results and lat/lng results in localstorage and call next page
 $(document).on("click", "#campgrounds", function() {
+    //add loading spinner
+    $("#campgrounds").html("<span class='glyphicon glyphicon-refresh glyphicon-refresh-animate'></span><span style='margin-left: 10px;'>Searching</span>");
     var target1 = $("#campSearch");
     userLocation("campgrounds", target1[0].attributes[0].ownerElement.value, function(result) {
         if (result.length > 0) {
@@ -24,6 +26,8 @@ $(document).on("click", "#campgrounds", function() {
 
 //store trail results and lat/lng in local storage and call next page
 $(document).on("click", "#trails", function() {
+    //add loading spinner
+    $("#trails").html("<span class='glyphicon glyphicon-refresh glyphicon-refresh-animate'></span><span style='margin-left: 10px;'>Searching</span>");
     var target2 = $("#trailSearch");
     userLocation("trails", target2[0].attributes[0].ownerElement.value, function(result) {
         console.log(result);

@@ -37,7 +37,7 @@ var mapboxKey = 'pk.eyJ1Ijoia3Jpa2FyciIsImEiOiJjajEwcmxpdmEwM2ZoMzJwZWNrc3hnYm13
 
         $('#campgrounds').append("<div class='col-sm-6 col-md-4'><div class='thumbnail'><h3 class='text-center'><strong>" +
             campground.name + "</strong></h3><img src='" + campground.image + "' alt=" + campground + i +
-            "><div class='caption'></h3><h3>" + campground.description + "<h3>Directions: " +
+            "><div class='caption'><h3>" + campground.description + "</h3<h3>Directions: " +
             campground.directions + "</h3><h3>Campground Latitude: " + campground.latitude +
             "</h3><h3>Campground Longitude: " + campground.longitude +
             "<p><a href='#' class='btn btn-primary' id='saveCampground' role='button'>Save Campground</a></p></div></div></div>");

@@ -177,7 +177,7 @@ router.get("/mapkey",function(req, res) {
 });
 
 function cleanCookie(req,res) {
-    var gotCookie = req.headers.cookie.includes("user=") || "undefined"
+    console.log(req.headers.cookie);
     if(gotCookie === "undefined") {
       res.render("modalLogin");
     }

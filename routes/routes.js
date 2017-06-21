@@ -8,8 +8,8 @@ router.get("/", function (req, res) {
 });
 
 router.get("/backpack", function (req, res) {
-  if(req.headers.cookie.includes("user=")) {
-    var userid = cleanCookie(req)
+  if(req.headers.cookie !== "undefined") {
+    var userid = cleanCookie(req,res)
     //this parses the cookie to get id from user
     query.getUserProfileById(userid)
     .then(function(userResult) {
@@ -43,8 +43,8 @@ router.get("/mealplan", function (req, res) {
 });
 
 router.get("/profile",function (req, res) {
-    if(req.headers.cookie.includes("user=")) {
-      var userid = cleanCookie(req)
+    if(req.headers.cookie !== "undefined") { //look for a better way to do this
+      var userid = cleanCookie(req,res)
       //this parses the cookie to get id from user
       query.getUserProfileById(userid)
       .then(function(userResult) {
@@ -128,7 +128,7 @@ router.post('/adduser', function(req, res) {
 });
 
 router.post("/addlocation",function(req,res) {
-  var userid = cleanCookie(req)
+  var userid = cleanCookie(req,res)
   if(userid !== "") {
     var locationData = {
       name: req.body.name,
@@ -186,9 +186,12 @@ router.get("/mapkey",function(req, res) {
 
 });
 
-function cleanCookie(req) {
+function cleanCookie(req,res) {
+  if(req.headers.cookie.includes("user=")) {
       var userid = req.headers.cookie.split("user=");
       return userid;
+  }
+  res.render("modalLogin");
 }
 
 function handleBarsDataReady(result) {

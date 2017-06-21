@@ -8,7 +8,6 @@ router.get("/", function (req, res) {
 });
 
 router.get("/backpack", function (req, res) {
-  if(req.headers.cookie !== "undefined") {
     var userid = cleanCookie(req,res)
     //this parses the cookie to get id from user
     query.getUserProfileById(userid)
@@ -20,10 +19,6 @@ router.get("/backpack", function (req, res) {
         userCity: userResult[0].userCity,
       });
     });
-  }
-  else {
-    res.render("modalLogin");
-  }
 });
 
 router.get("/backpack/packer", function (req, res) {
@@ -43,7 +38,6 @@ router.get("/mealplan", function (req, res) {
 });
 
 router.get("/profile",function (req, res) {
-    if(req.headers.cookie !== "undefined") { //look for a better way to do this
       var userid = cleanCookie(req,res)
       //this parses the cookie to get id from user
       query.getUserProfileById(userid)
@@ -77,10 +71,6 @@ router.get("/profile",function (req, res) {
         res.status("500")
         .send("sequelize error occured")
       });
-    }
-    else {
-      res.render("modalLogin");
-    }
 });
 
 router.post("/authenticate",function(req,res) {
@@ -187,11 +177,15 @@ router.get("/mapkey",function(req, res) {
 });
 
 function cleanCookie(req,res) {
-  if(req.headers.cookie.includes("user=")) {
+  try{
+    if(req.headers.cookie.includes("user=")) {
       var userid = req.headers.cookie.split("user=");
       return userid;
+    }
   }
+  catch{
   res.render("modalLogin");
+}
 }
 
 function handleBarsDataReady(result) {

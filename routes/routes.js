@@ -177,15 +177,16 @@ router.get("/mapkey",function(req, res) {
 });
 
 function cleanCookie(req,res) {
-  try{
-    if(req.headers.cookie.includes("user=")) {
+    if(eq.headers.cookie.includes("user=") === "undefined") {
+      res.render("modalLogin");
+    }
+    else if(req.headers.cookie.includes("user=")) {
       var userid = req.headers.cookie.split("user=");
       return userid;
     }
-  }
-  catch() {
-    res.render("modalLogin");
-  }
+    else {
+      res.render("modalLogin");
+    }
 }
 
 function handleBarsDataReady(result) {

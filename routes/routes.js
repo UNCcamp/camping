@@ -183,9 +183,9 @@ function cleanCookie(req,res) {
       return userid;
     }
   }
-  catch{
-  res.render("modalLogin");
-}
+  catch() {
+    res.render("modalLogin");
+  }
 }
 
 function handleBarsDataReady(result) {

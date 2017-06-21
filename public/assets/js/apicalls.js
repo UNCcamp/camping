@@ -9,6 +9,7 @@ var lng = 0;
 
 //store camping results and lat/lng results in localstorage and call next page
 $(document).on("click", "#campgrounds", function() {
+    event.preventDefault();
     //add loading spinner
     $("#campgrounds").html("<span class='glyphicon glyphicon-refresh glyphicon-refresh-animate'></span><span style='margin-left: 10px;'>Searching</span>");
     var target1 = $("#campSearch");
@@ -28,6 +29,7 @@ $(document).on("click", "#campgrounds", function() {
 
 //store trail results and lat/lng in local storage and call next page
 $(document).on("click", "#trails", function() {
+    event.preventDefault();
     //add loading spinner
     $("#trails").html("<span class='glyphicon glyphicon-refresh glyphicon-refresh-animate'></span><span style='margin-left: 10px;'>Searching</span>");
     var target2 = $("#trailSearch");
@@ -175,3 +177,9 @@ function trailCall(lat, lng, callback) {
         callback(result);
     });
 }
+
+$(document).on("click", "#closeModal", function() {
+    event.preventDefault();
+    $("#campgrounds").html("<span class='glyphicon glyphicon-search' aria-hidden='true'><span style='margin-left:10px;'>Search</span>"); 
+    $("#trails").html("<span class='glyphicon glyphicon-search' aria-hidden='true'><span style='margin-left:10px;'>Search</span>");
+});

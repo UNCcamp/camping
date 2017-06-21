@@ -8,7 +8,7 @@ router.get("/", function (req, res) {
 });
 
 router.get("/backpack", function (req, res) {
-  if(req.headers.cookie) {
+  if(req.headers.cookie.includes("user=")) {
     var userid = cleanCookie(req)
     //this parses the cookie to get id from user
     query.getUserProfileById(userid)
@@ -43,7 +43,7 @@ router.get("/mealplan", function (req, res) {
 });
 
 router.get("/profile",function (req, res) {
-    if(req.headers.cookie) {
+    if(req.headers.cookie.includes("user=")) {
       var userid = cleanCookie(req)
       //this parses the cookie to get id from user
       query.getUserProfileById(userid)
@@ -88,15 +88,15 @@ router.post("/authenticate",function(req,res) {
   var pass = req.body.pass;
   query.getUserProfileByName(email)
   .then(function(result) {
-    auth.authenticate(result[0].passWord,pass, function(isAuth){
+    if(result.length < 1) {
+      return res.status("401")        // HTTP unauthorized
+      .send("Not authorized");
+    }
+    auth.authenticate(result[0].passWord,pass, function(isAuth) {
       if(isAuth) {
         res.cookie('user', result[0].id, { expires: new Date(Date.now() + 36000000), httpOnly: true });
         res.status("200")
         .send("OK");
-      }
-      else {
-        res.status("401")        // HTTP unauthorized
-        .send("Not authorized");
       }
     });
   })
@@ -187,18 +187,8 @@ router.get("/mapkey",function(req, res) {
 });
 
 function cleanCookie(req) {
-  console.log(req.headers);
-  console.log(process.env.NODE_ENV === "production");
-  if(req.headers.cookie.includes("user")) {
-    if(process.env.NODE_ENV === "production") {
-      var userid = req.headers.cookie.split("=")[1];
-    }
-    else {
-      var userid = req.headers.cookie.split(";")[1].split("=")[1];
-    }
-    return userid;
-  }
-  return "";
+      var userid = req.headers.cookie.split("user=");
+      return userid;
 }
 
 function handleBarsDataReady(result) {

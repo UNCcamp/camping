@@ -1,5 +1,7 @@
 const express = require("express"),
-pageRoutes = require("./routes/routes"),
+pageRoutes = require("./routes/handleBarsRoutes"),
+locations = require("./routes/locationsApi"),
+userApi = require("./routes/userApi"),
 exphbs  = require("express-handlebars"),
 bodyParser = require("body-parser");
 
@@ -27,12 +29,13 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(pageRoutes);
+app.use(userApi);
+app.use(locations);
 
 
-// var db = require('./models');
-//  db.sequelize.sync().then(function() {
+var db = require('./models');
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
- // });
-
+});

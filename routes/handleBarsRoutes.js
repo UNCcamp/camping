@@ -3,11 +3,13 @@ var query = require("../controllers/controller");
 var utils = require("../utils/utils");
 var router = express.Router();
 
+//router.use(cleanCookie); if we needed this to be checked for all routes
+
 router.get("/", function (req, res) {
     res.render("index");
 });
 
-router.get("/backpack", cleanCookie,function (req, res) {
+router.get("/backpack",function (req, res) {
     query.getUserProfileById(userid)
     .then(function(userResult) {
       res.render("backpack", {
@@ -36,27 +38,26 @@ router.get("/mealplan", function (req, res) {
 });
 
 router.get("/profile", cleanCookie, function (req, res) {
-      //this parses the cookie to get id from user
+  var userid = req.isAuth;
   query.getUserProfileById(userid)
     .then(function(userResult) {
       if(userResult) {
-          query.getUserLocations(userid)
+        query.getUserLocations(userid)
           .then(function(locResult){
-             var imagesResult = utils.handleBarsDataReady(locResult);
-            //  res.render("ProfileMain", {
-            //    imageURL: userResult[0].imageURL,
-            //    firstName: userResult[0].firstName,
-            //    lastName: userResult[0].lastName,
-            //    userCity: userResult[0].userCity,
-            //    aboutMe: userResult[0].aboutMe,
-            //    campImages: imagesResult
-            //   });
-            res.send(imagesResult);
+            var imagesResult = utils.handleBarsDataReady(locResult);
+             res.render("ProfileMain", {
+               imageURL: userResult[0].imageURL,
+               firstName: userResult[0].firstName,
+               lastName: userResult[0].lastName,
+               userCity: userResult[0].userCity,
+               aboutMe: userResult[0].aboutMe,
+               campImages: imagesResult
+              });
+            //res.send(imagesResult);
           })
-          .catch(function(e){
-            console.log(e);
+          .catch(function(){
             res.status("500")
-            .send("Error adding location");
+            .send("Error getting location images");
           });
         }
         else {
@@ -85,13 +86,14 @@ router.get("/mapkey",function(req, res) {
 
 });
 
-function cleanCookie(req,res) {
+function cleanCookie(req,res,next) {
     if(!req.headers.hasOwnProperty('cookie')) {
       res.render("modalLogin");
     }
     else if(req.headers.cookie.includes("user=")) {
       var userid = req.headers.cookie.split("user=");
-      req.user = userid;
+      req.isAuth = userid;
+      next();
     }
     else {
       res.render("modalLogin");

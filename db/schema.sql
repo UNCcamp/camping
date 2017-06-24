@@ -59,8 +59,8 @@ CREATE TABLE Location
         profileId INT NOT NULL,
         locationName VARCHAR (50) NOT NULL,
 		locationDescription VARCHAR (255) NOT NULL,
-		latLocation DECIMAL (9,9),
-		longLocation DECIMAL (9,9),
+		latLocation FLOAT (10,6),
+		longLocation FLOAT (10,6),
 		PRIMARY KEY (locationId),
 		FOREIGN KEY (profileId) REFERENCES PROFILES(profileId)
         );

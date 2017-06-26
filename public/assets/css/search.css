@@ -1,0 +1,97 @@
+.navbar{
+  position: fixed;
+  top: 0px;
+}
+.Jason{
+  position: center;
+  left: 50px;
+  background-color: transparent;
+}
+
+html{
+  background-image: url("../icons/campCrystalLake.jpg");
+  background-color: transparent;
+}
+body {
+background-color: transparent;
+color:#def0ac;
+}
+
+#saveTrail {
+	margin-top: 20px;
+}
+
+#saveCampground {
+	margin-top: 20px;
+}
+
+#map {
+	margin: 40px;
+}
+
+.row.display-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.thumbnail {
+  height: 100%;
+}
+
+h1 {
+	margin-bottom: 20px;
+}
+
+#marker {
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#marker-trail {
+    background-color: green;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;	
+}
+.mapboxgl-popup {
+    max-width: 200px;
+}
+#marker {
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#marker-trail {
+    background-color: green;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;	
+}
+
+.mapboxgl-popup {
+    max-width: 250px;
+}
+
+.mapboxgl-popup-content {
+	color: black;
+}
+
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}

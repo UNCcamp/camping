@@ -41,3 +41,4 @@ $(document).ready(function() {
     interval: 3000
   })
 });
+

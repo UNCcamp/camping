@@ -1,17 +1,13 @@
-<body>
-<div class="main">
-  <!-- Content Here -->
-</div>
-<style type="text/css">
-@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,400,700);
-</style>
-</head>
+{{#section 'head'}}
+  <link rel="stylesheet" type="text/css" href="/assets/css/search.css">
+{{/section}}
 <div class="container" style="margin-top: 5%;">
     <link rel="stylesheet" type="text/css" href="/assets/css/search.css">
     <div class="col-md-12"><img class="col-md-offset-4 col-md-3 Jason" src="/assets/icons/jason.svg"></div>
     <div class="col-md-offset-3 col-md-7 BootCampBlip"><h2>Welcome to BootCamping: Your homegrown guide for camping</h2></div>
     <div class="col-md-6 col-md-offset-3">
-
+    {{!-- add div for map so it works, but without styling so it doesn't show --}}
+    <div id="map"></div>
 
         <!-- Search Form -->
         <form role="form">
@@ -21,9 +17,9 @@
                 <h1 class="text-center">Search Campgrounds</h1>
                 <div class="form-group">
                     <div class="input-group">
-                        <input class="form-control" type="text" name="search" placeholder="Search" required/>
+                        <input class="form-control" type="text" id="campSearch" name="search" placeholder="Search Campgrounds" required/>
                         <span class="input-group-btn">
-                            <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"><span style="margin-left:10px;">Search</span></button>
+                            <button class="submit1 btn btn-success" id="campgrounds" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"><span style="margin-left:10px;">Search</span></button>
                         </span>
                         </span>
                     </div>
@@ -33,23 +29,22 @@
         </form>
         <!-- End of Search Form -->
         <form role="form">
-
         <!-- Search Field -->
             <div class="row">
                 <h1 class="text-center">Search Trails</h1>
                 <div class="form-group">
                     <div class="input-group">
-                        <input class="form-control" type="text" name="search" placeholder="Search" required/>
+                        <input class="form-control" type="text" id="trailSearch" name="search" placeholder="Search Trails" required/>
                         <span class="input-group-btn">
-                            <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"><span style="margin-left:10px;">Search</span></button>
+                            <button class="submit2 btn btn-success" id="trails" onclick="" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"><span style="margin-left:10px;">Search</span></button>
                         </span>
                         </span>
                     </div>
                 </div>
             </div>
-
         </form>
-
     </div>
-</div>
-</body>
+
+{{#section 'footer'}}
+<script type="text/javascript" src="/assets/js/apicalls.js"></script>
+{{/section}} 

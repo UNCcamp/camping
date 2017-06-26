@@ -1,24 +1,15 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('Inventories', {
+    return queryInterface.createTable('Resources', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      inventoryID: {
-        type: Sequelize.INTEGER
-      },
-      itemName: {
+      url: {
         type: Sequelize.STRING
-      },
-      itemDescription: {
-        type: Sequelize.TEXT
-      },
-      itemQuantity: {
-        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -27,10 +18,19 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      locationid: {   // <- This is the new section to add
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Locations',
+          key: 'id',
+          as: 'locationId'
+        }
       }
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Inventories');
+    return queryInterface.dropTable('Resources');
   }
 };

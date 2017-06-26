@@ -1,6 +1,6 @@
-<body>
-  <link rel="stylesheet prefetch" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-  <div class="wrapper">
+{{#section 'head'}}
+  <link rel="stylesheet" type="text/css" href="/assets/css/backPackBuilder.css">
+{{/section}}
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -10,10 +10,10 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                   <div class="item">
-                    <img src="http://placehold.it/1200x400/F34336/F34336&amp;text=WORDPRESS THEME DEVELOPER">
+                    <img src="https://s-media-cache-ak0.pinimg.com/736x/56/29/b4/5629b46972629264dc64cfb8c712324f.jpg">
                   </div>
                   <div class="item active">
-                    <img src="http://placehold.it/1200x400/20BFA9/ffffff&amp;text=CLEAN %26 SMART">
+                    <img src="http://mysticinvestigations.com/supernatural/wp-content/uploads/2015/11/Jason13th.jpg">
                   </div>
                 </div>
                 <!-- Controls -->
@@ -37,14 +37,14 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand2" href="#"><img class="img-responsive" src="http://rolyart.ro/wp-content/uploads/2016/07/roland-maruntelu-freelancer-romania.jpg"></a>
-                <span class="site-name"><b>Jason</b> Voorhees</span>
-                <span class="site-description">worpress theme developer</span>
+                <a class="navbar-brand2" href="#"><img class="img-responsive" src="{{imageURL}}"></a>
+                <span class="site-name"><b>{{firstName}}</b> {{lastName}}</span> <!-- fname lname -->
+                <span class="site-description">{{userCity}}</span>
               </div>
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="nav main-menu navbar-nav">
-                  <li><a href="/index"><i class="fa fa-home"></i> HOME</a></li>
+                  <li><a href="index"><i class="fa fa-home"></i> HOME</a></li>
                   <li><a href="#">Link</a></li>
                   <li><a href="#">Link</a></li>
                 </ul>
@@ -58,13 +58,10 @@
             </nav>
           </header>
           <!--/#HEADER-->
-          <script type="text/javascript">
-          </script>
         </div>
       </div>
     </div>
-  </div>
-</head>
+
 <div class="container3">
     <div class="col-md-12">
       <div class=" col-md-5 form-group">
@@ -253,7 +250,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div id="item-area" class="col-md-6">
         <div class="col-md-6">
           <div class="funkyradio">
             <div class="funkyradio-success">
@@ -290,16 +287,12 @@
             </div>
           </div>
         </div>
+
       </div>
        <div class=" col-md-offset-7 col-md-2 form-group">
         <input type="text" class="form-control" id="NewItem">
       </div>
-      <button type="button" class=" btn btn-info">Add Item</button>
+      <button type="button" class="addItem btn btn-info">Add Item</button>
       <button type="button" class=" btn btn-success">Build Backpack</button>
     </div>
-    <script type="text/javascript">
-    </script>
-  </body>
-
-  </html>
 </div>

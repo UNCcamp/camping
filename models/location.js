@@ -1,7 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Location = sequelize.define('Location', {
-    locationID: DataTypes.INTEGER,
     locationName: DataTypes.STRING,
     locationDescription: DataTypes.TEXT,
     latLocation: DataTypes.DECIMAL,
@@ -9,11 +8,16 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
-        Location.belongsTo(models.Profiles);
+          Location.belongsTo(models.Profiles,{
+          foreignKey: 'c_profileId',
+          onDelete: 'CASCADE'
+        }),
+        Loadouts.hasMany(models.Resource,{
+        foreignKey: 'locationId',
+        as: 'resourceImage'
+      }) //
       }
     }
   });
   return Location;
 };
-

@@ -1,18 +1,18 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('LoadoutItems', {
+    return queryInterface.createTable('Inventories', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      loadoutId: {
-        type: Sequelize.INTEGER
+      itemName: {
+        type: Sequelize.STRING
       },
-      inventoryId: {
-        type: Sequelize.INTEGER
+      itemDescription: {
+        type: Sequelize.TEXT
       },
       itemQuantity: {
         type: Sequelize.INTEGER
@@ -24,10 +24,19 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      profileId: {   // <- This is the new section to add
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Profiles',
+          key: 'id',
+          as: 'v_profileId'
+        }
       }
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('LoadoutItems');
+    return queryInterface.dropTable('Inventories');
   }
 };
